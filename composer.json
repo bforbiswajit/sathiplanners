@@ -3,10 +3,18 @@
 	"name" : "codeigniter/framework",
 	"license": "MIT",
 	"require": {
+<<<<<<< HEAD
 		"php": ">=5.2.4"
 	},
 	"require-dev": {
 		"mikey179/vfsStream": "1.1.*"
 		"doctrine/orm": "dev-master"
+=======
+		"php": ">=5.2.4",
+        "doctrine/orm": "dev-master"
+	},
+	"require-dev": {
+		"mikey179/vfsStream": "1.1.*"
+>>>>>>> d48d6945b23cb00834b532925bd3bd1c534a57a0
 	}
 }

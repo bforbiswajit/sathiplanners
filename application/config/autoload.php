@@ -60,7 +60,16 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
 
+<<<<<<< HEAD
 $autoload['libraries'] = array();
+=======
+$autoload['libraries'] = array(
+                                'MY_Composer',
+                                'database',
+                                'Doctrine',
+                                'Auth_service'
+                              );
+>>>>>>> d48d6945b23cb00834b532925bd3bd1c534a57a0
 
 
 /*
