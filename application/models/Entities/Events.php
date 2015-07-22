@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Events
  *
- * @ORM\Table(name="events")
+ * @ORM\Table(name="events", indexes={@ORM\Index(name="events_ibfk_1", columns={"planId"})})
  * @ORM\Entity
  */
 class Events
@@ -20,13 +20,6 @@ class Events
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="minesId", type="integer", nullable=false)
-     */
-    private $minesid;
 
     /**
      * @var string
@@ -52,9 +45,19 @@ class Events
     /**
      * @var string
      *
-     * @ORM\Column(name="notes", type="string", length=255, nullable=false)
+     * @ORM\Column(name="notes", type="string", length=255, nullable=true)
      */
     private $notes;
+
+    /**
+     * @var \Entities\Plan
+     *
+     * @ORM\ManyToOne(targetEntity="Entities\Plan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="planId", referencedColumnName="id")
+     * })
+     */
+    private $planid;
 
 
     /**
@@ -65,30 +68,6 @@ class Events
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set minesid
-     *
-     * @param integer $minesid
-     *
-     * @return Events
-     */
-    public function setMinesid($minesid)
-    {
-        $this->minesid = $minesid;
-    
-        return $this;
-    }
-
-    /**
-     * Get minesid
-     *
-     * @return integer
-     */
-    public function getMinesid()
-    {
-        return $this->minesid;
     }
 
     /**
@@ -185,6 +164,30 @@ class Events
     public function getNotes()
     {
         return $this->notes;
+    }
+
+    /**
+     * Set planid
+     *
+     * @param \Entities\Plan $planid
+     *
+     * @return Events
+     */
+    public function setPlanid(\Entities\Plan $planid = null)
+    {
+        $this->planid = $planid;
+    
+        return $this;
+    }
+
+    /**
+     * Get planid
+     *
+     * @return \Entities\Plan
+     */
+    public function getPlanid()
+    {
+        return $this->planid;
     }
 }
 

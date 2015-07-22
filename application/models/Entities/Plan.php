@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Plan
  *
- * @ORM\Table(name="plan", indexes={@ORM\Index(name="plan_ibfk_1", columns={"applicantId"}), @ORM\Index(name="plan_ibfk_2", columns={"minesId"})})
+ * @ORM\Table(name="plan", uniqueConstraints={@ORM\UniqueConstraint(name="fileNo", columns={"fileNo"})}, indexes={@ORM\Index(name="plan_ibfk_1", columns={"applicantId"})})
  * @ORM\Entity
  */
 class Plan
@@ -65,16 +65,6 @@ class Plan
      * })
      */
     private $applicantid;
-
-    /**
-     * @var \Entities\Mines
-     *
-     * @ORM\ManyToOne(targetEntity="Entities\Mines")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="minesId", referencedColumnName="id")
-     * })
-     */
-    private $minesid;
 
 
     /**
@@ -229,30 +219,6 @@ class Plan
     public function getApplicantid()
     {
         return $this->applicantid;
-    }
-
-    /**
-     * Set minesid
-     *
-     * @param \Entities\Mines $minesid
-     *
-     * @return Plan
-     */
-    public function setMinesid(\Entities\Mines $minesid = null)
-    {
-        $this->minesid = $minesid;
-    
-        return $this;
-    }
-
-    /**
-     * Get minesid
-     *
-     * @return \Entities\Mines
-     */
-    public function getMinesid()
-    {
-        return $this->minesid;
     }
 }
 

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Mines
  *
- * @ORM\Table(name="mines")
+ * @ORM\Table(name="mines", indexes={@ORM\Index(name="mines_ibfk_1", columns={"planId"})})
  * @ORM\Entity
  */
 class Mines
@@ -20,13 +20,6 @@ class Mines
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=35, nullable=false)
-     */
-    private $name;
 
     /**
      * @var float
@@ -63,6 +56,16 @@ class Mines
      */
     private $notes;
 
+    /**
+     * @var \Entities\Plan
+     *
+     * @ORM\ManyToOne(targetEntity="Entities\Plan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="planId", referencedColumnName="id")
+     * })
+     */
+    private $planid;
+
 
     /**
      * Get id
@@ -72,30 +75,6 @@ class Mines
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Mines
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -216,6 +195,30 @@ class Mines
     public function getNotes()
     {
         return $this->notes;
+    }
+
+    /**
+     * Set planid
+     *
+     * @param \Entities\Plan $planid
+     *
+     * @return Mines
+     */
+    public function setPlanid(\Entities\Plan $planid = null)
+    {
+        $this->planid = $planid;
+    
+        return $this;
+    }
+
+    /**
+     * Get planid
+     *
+     * @return \Entities\Plan
+     */
+    public function getPlanid()
+    {
+        return $this->planid;
     }
 }
 

@@ -31,6 +31,13 @@ class Applicant
     /**
      * @var string
      *
+     * @ORM\Column(name="businessTitle", type="string", length=35, nullable=true)
+     */
+    private $businesstitle;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="mobile", type="string", length=10, nullable=false)
      */
     private $mobile;
@@ -138,6 +145,30 @@ class Applicant
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set businesstitle
+     *
+     * @param string $businesstitle
+     *
+     * @return Applicant
+     */
+    public function setBusinesstitle($businesstitle)
+    {
+        $this->businesstitle = $businesstitle;
+    
+        return $this;
+    }
+
+    /**
+     * Get businesstitle
+     *
+     * @return string
+     */
+    public function getBusinesstitle()
+    {
+        return $this->businesstitle;
     }
 
     /**
