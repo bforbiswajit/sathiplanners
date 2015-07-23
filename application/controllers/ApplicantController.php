@@ -57,7 +57,7 @@ class ApplicantController extends CI_Controller
                 exit;
             }
             
-            if(preg_match("/[a-zA-Z]{1,20}/", $state = isset($_POST['state']) ? trim($_POST['state']) : "") == 0)
+            if(preg_match("/[a-zA-Z\s]{1,20}/", $state = isset($_POST['state']) ? trim($_POST['state']) : "") == 0)
             {
                 echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid State Name.", "Code" => "400")));
                 exit;
@@ -71,18 +71,17 @@ class ApplicantController extends CI_Controller
             
             if(preg_match("/\d\d\/\d\d\/\d\d\d\d/", $dob = isset($_POST['dob']) ? trim($_POST['dob']) : "") == 0)
             {
-                $dob = "";
+                $dob = NULL;
             }
             
             if(preg_match("/\d\d\/\d\d\/\d\d\d\d/", $ma = isset($_POST['ma']) ? trim($_POST['ma']) : "") == 0)
             {
-                $ma = "";
+                $ma = NULL;
             }
             
             if(preg_match("/[a-zA-Z0-9\s\S\-\_\,\.@]{1,20}/", $notes = isset($_POST['notes']) ? trim($_POST['notes']) : "") == 0)
             {
-                echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid State Name.", "Code" => "400")));
-                exit;
+                $notes = "";
             }
             
             $this->load->model('Applicant_model');
