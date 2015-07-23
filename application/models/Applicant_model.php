@@ -6,7 +6,7 @@
  */
 defined('BASEPATH') OR exit('Forbidden!');
 
-class Conveners_model extends CI_Model {
+class Applicant_model extends CI_Model {
     public $em;
     public function __construct()
     {
@@ -33,8 +33,10 @@ class Conveners_model extends CI_Model {
         $applicant->setDistrict($district);
         $applicant->setState($state);
         $applicant->setPin($pin);
-        $applicant->setDob($dob);
-        $applicant->setMa($ma);
+        /*$applicant->setDob(($dob == NULL) ? NULL : new \DateTime((string)$dob));
+        $applicant->setMa(($ma == NULL) ? NULL : new \DateTime((string)$ma));*/
+        $applicant->setDob(new \DateTime("now"));
+        $applicant->setMa(new \DateTime("now"));
         $applicant->setNotes($notes);
         //var_dump($applicant);exit;
         try
@@ -47,8 +49,8 @@ class Conveners_model extends CI_Model {
         }
         catch(Exception $exc)
         {
-            //return array("status" => "error", "message" => array("Title" => $exc->getTraceAsString(), "Code" => "503"));
-            return array("status" => "error", "message" => array("Title" => "Sorry, Failed to add new applicant, please try again.", "Code" => "503"));
+            return array("status" => "error", "message" => array("Title" => $exc->getTraceAsString(), "Code" => "503"));
+            //return array("status" => "error", "message" => array("Title" => "Sorry, Failed to add new applicant, please try again.", "Code" => "503"));
         }
     }
 }
