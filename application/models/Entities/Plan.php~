@@ -87,7 +87,7 @@ class Plan
     public function setType($type)
     {
         $this->type = $type;
-    
+
         return $this;
     }
 
@@ -111,7 +111,7 @@ class Plan
     public function setDateofregistration($dateofregistration)
     {
         $this->dateofregistration = $dateofregistration;
-    
+
         return $this;
     }
 
@@ -135,7 +135,7 @@ class Plan
     public function setRqp($rqp)
     {
         $this->rqp = $rqp;
-    
+
         return $this;
     }
 
@@ -159,7 +159,7 @@ class Plan
     public function setAmount($amount)
     {
         $this->amount = $amount;
-    
+
         return $this;
     }
 
@@ -183,7 +183,7 @@ class Plan
     public function setFileno($fileno)
     {
         $this->fileno = $fileno;
-    
+
         return $this;
     }
 
@@ -207,7 +207,7 @@ class Plan
     public function setApplicantid(\Entities\Applicant $applicantid = null)
     {
         $this->applicantid = $applicantid;
-    
+
         return $this;
     }
 

@@ -80,7 +80,7 @@ class Events
     public function setType($type)
     {
         $this->type = $type;
-    
+
         return $this;
     }
 
@@ -104,7 +104,7 @@ class Events
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -128,7 +128,7 @@ class Events
     public function setDoneby($doneby)
     {
         $this->doneby = $doneby;
-    
+
         return $this;
     }
 
@@ -152,7 +152,7 @@ class Events
     public function setNotes($notes)
     {
         $this->notes = $notes;
-    
+
         return $this;
     }
 
@@ -176,7 +176,7 @@ class Events
     public function setPlanid(\Entities\Plan $planid = null)
     {
         $this->planid = $planid;
-    
+
         return $this;
     }
 

@@ -87,23 +87,23 @@ class Applicant
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dob", type="date", nullable=true)
+     * @ORM\Column(name="dob", type="datetime", nullable=true)
      */
-    private $dob;
+    private $dob = '0000-00-00 00:00:00';
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="ma", type="date", nullable=true)
+     * @ORM\Column(name="ma", type="datetime", nullable=true)
      */
-    private $ma;
+    private $ma = '0000-00-00 00:00:00';
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="registeredOn", type="date", nullable=false)
+     * @ORM\Column(name="registeredOn", type="datetime", nullable=false)
      */
-    private $registeredon;
+    private $registeredon = '0000-00-00 00:00:00';
 
     /**
      * @var string
@@ -133,7 +133,7 @@ class Applicant
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
@@ -157,7 +157,7 @@ class Applicant
     public function setBusinesstitle($businesstitle)
     {
         $this->businesstitle = $businesstitle;
-    
+
         return $this;
     }
 
@@ -181,7 +181,7 @@ class Applicant
     public function setMobile($mobile)
     {
         $this->mobile = $mobile;
-    
+
         return $this;
     }
 
@@ -205,7 +205,7 @@ class Applicant
     public function setEmail($email)
     {
         $this->email = $email;
-    
+
         return $this;
     }
 
@@ -229,7 +229,7 @@ class Applicant
     public function setAddressline($addressline)
     {
         $this->addressline = $addressline;
-    
+
         return $this;
     }
 
@@ -253,7 +253,7 @@ class Applicant
     public function setCity($city)
     {
         $this->city = $city;
-    
+
         return $this;
     }
 
@@ -277,7 +277,7 @@ class Applicant
     public function setDistrict($district)
     {
         $this->district = $district;
-    
+
         return $this;
     }
 
@@ -301,7 +301,7 @@ class Applicant
     public function setState($state)
     {
         $this->state = $state;
-    
+
         return $this;
     }
 
@@ -325,7 +325,7 @@ class Applicant
     public function setPin($pin)
     {
         $this->pin = $pin;
-    
+
         return $this;
     }
 
@@ -349,7 +349,7 @@ class Applicant
     public function setDob($dob)
     {
         $this->dob = $dob;
-    
+
         return $this;
     }
 
@@ -373,7 +373,7 @@ class Applicant
     public function setMa($ma)
     {
         $this->ma = $ma;
-    
+
         return $this;
     }
 
@@ -397,7 +397,7 @@ class Applicant
     public function setRegisteredon($registeredon)
     {
         $this->registeredon = $registeredon;
-    
+
         return $this;
     }
 
@@ -421,7 +421,7 @@ class Applicant
     public function setNotes($notes)
     {
         $this->notes = $notes;
-    
+
         return $this;
     }
 

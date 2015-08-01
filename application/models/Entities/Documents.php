@@ -49,7 +49,7 @@ class Documents
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
@@ -63,4 +63,3 @@ class Documents
         return $this->name;
     }
 }
-

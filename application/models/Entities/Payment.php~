@@ -73,7 +73,7 @@ class Payment
     public function setAmount($amount)
     {
         $this->amount = $amount;
-    
+
         return $this;
     }
 
@@ -97,7 +97,7 @@ class Payment
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -121,7 +121,7 @@ class Payment
     public function setMode($mode)
     {
         $this->mode = $mode;
-    
+
         return $this;
     }
 
@@ -145,7 +145,7 @@ class Payment
     public function setPlanid(\Entities\Plan $planid = null)
     {
         $this->planid = $planid;
-    
+
         return $this;
     }
 

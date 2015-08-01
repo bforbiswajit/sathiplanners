@@ -22,16 +22,6 @@ class PlanEvent
     private $id;
 
     /**
-     * @var \Entities\Events
-     *
-     * @ORM\ManyToOne(targetEntity="Entities\Events")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="eventId", referencedColumnName="id")
-     * })
-     */
-    private $eventid;
-
-    /**
      * @var \Entities\Plan
      *
      * @ORM\ManyToOne(targetEntity="Entities\Plan")
@@ -40,6 +30,16 @@ class PlanEvent
      * })
      */
     private $planid;
+
+    /**
+     * @var \Entities\Events
+     *
+     * @ORM\ManyToOne(targetEntity="Entities\Events")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="eventId", referencedColumnName="id")
+     * })
+     */
+    private $eventid;
 
 
     /**
@@ -53,30 +53,6 @@ class PlanEvent
     }
 
     /**
-     * Set eventid
-     *
-     * @param \Entities\Events $eventid
-     *
-     * @return PlanEvent
-     */
-    public function setEventid(\Entities\Events $eventid = null)
-    {
-        $this->eventid = $eventid;
-    
-        return $this;
-    }
-
-    /**
-     * Get eventid
-     *
-     * @return \Entities\Events
-     */
-    public function getEventid()
-    {
-        return $this->eventid;
-    }
-
-    /**
      * Set planid
      *
      * @param \Entities\Plan $planid
@@ -86,7 +62,7 @@ class PlanEvent
     public function setPlanid(\Entities\Plan $planid = null)
     {
         $this->planid = $planid;
-    
+
         return $this;
     }
 
@@ -99,5 +75,28 @@ class PlanEvent
     {
         return $this->planid;
     }
-}
 
+    /**
+     * Set eventid
+     *
+     * @param \Entities\Events $eventid
+     *
+     * @return PlanEvent
+     */
+    public function setEventid(\Entities\Events $eventid = null)
+    {
+        $this->eventid = $eventid;
+
+        return $this;
+    }
+
+    /**
+     * Get eventid
+     *
+     * @return \Entities\Events
+     */
+    public function getEventid()
+    {
+        return $this->eventid;
+    }
+}

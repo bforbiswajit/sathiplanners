@@ -62,7 +62,7 @@ class PlanEvent
     public function setPlanid(\Entities\Plan $planid = null)
     {
         $this->planid = $planid;
-    
+
         return $this;
     }
 
@@ -86,7 +86,7 @@ class PlanEvent
     public function setEventid(\Entities\Events $eventid = null)
     {
         $this->eventid = $eventid;
-    
+
         return $this;
     }
 

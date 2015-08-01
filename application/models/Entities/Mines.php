@@ -87,7 +87,7 @@ class Mines
     public function setArea($area)
     {
         $this->area = $area;
-    
+
         return $this;
     }
 
@@ -111,7 +111,7 @@ class Mines
     public function setLeastype($leastype)
     {
         $this->leastype = $leastype;
-    
+
         return $this;
     }
 
@@ -135,7 +135,7 @@ class Mines
     public function setDistrict($district)
     {
         $this->district = $district;
-    
+
         return $this;
     }
 
@@ -159,7 +159,7 @@ class Mines
     public function setMouza($mouza)
     {
         $this->mouza = $mouza;
-    
+
         return $this;
     }
 
@@ -183,7 +183,7 @@ class Mines
     public function setNotes($notes)
     {
         $this->notes = $notes;
-    
+
         return $this;
     }
 
@@ -207,7 +207,7 @@ class Mines
     public function setPlanid(\Entities\Plan $planid = null)
     {
         $this->planid = $planid;
-    
+
         return $this;
     }
 
@@ -221,4 +221,3 @@ class Mines
         return $this->planid;
     }
 }
-

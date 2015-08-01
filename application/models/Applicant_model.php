@@ -33,10 +33,11 @@ class Applicant_model extends CI_Model {
         $applicant->setDistrict($district);
         $applicant->setState($state);
         $applicant->setPin($pin);
-        /*$applicant->setDob(($dob == NULL) ? NULL : new \DateTime((string)$dob));
-        $applicant->setMa(($ma == NULL) ? NULL : new \DateTime((string)$ma));*/
-        $applicant->setDob(new \DateTime("now"));
-        $applicant->setMa(new \DateTime("now"));
+        $applicant->setDob(($dob == NULL) ? NULL : new \DateTime((string)$dob));
+        $applicant->setMa(($ma == NULL) ? NULL : new \DateTime((string)$ma));
+        $applicant->setRegisteredon(new \DateTime("now"));
+        /*$applicant->setDob(new \DateTime("now"));
+        $applicant->setMa(new \DateTime("now"));*/
         $applicant->setNotes($notes);
         //var_dump($applicant);exit;
         try
@@ -44,7 +45,6 @@ class Applicant_model extends CI_Model {
             $this->em->persist($applicant);
             $this->em->flush();
             
-            $thisUser = $user->getId();
             return array("status" => "success", "data" => array("New Applicant Added Successfully."));
         }
         catch(Exception $exc)

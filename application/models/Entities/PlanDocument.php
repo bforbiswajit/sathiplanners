@@ -83,7 +83,7 @@ class PlanDocument
     public function setStatus($status)
     {
         $this->status = $status;
-    
+
         return $this;
     }
 
@@ -107,7 +107,7 @@ class PlanDocument
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
@@ -131,7 +131,7 @@ class PlanDocument
     public function setNotes($notes)
     {
         $this->notes = $notes;
-    
+
         return $this;
     }
 
@@ -155,7 +155,7 @@ class PlanDocument
     public function setPlanid(\Entities\Plan $planid = null)
     {
         $this->planid = $planid;
-    
+
         return $this;
     }
 
@@ -179,7 +179,7 @@ class PlanDocument
     public function setDocid(\Entities\Documents $docid = null)
     {
         $this->docid = $docid;
-    
+
         return $this;
     }
 
@@ -193,4 +193,3 @@ class PlanDocument
         return $this->docid;
     }
 }
-
