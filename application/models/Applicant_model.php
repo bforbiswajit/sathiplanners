@@ -36,8 +36,6 @@ class Applicant_model extends CI_Model {
         $applicant->setDob(($dob == NULL) ? NULL : new \DateTime((string)$dob));
         $applicant->setMa(($ma == NULL) ? NULL : new \DateTime((string)$ma));
         $applicant->setRegisteredon(new \DateTime("now"));
-        /*$applicant->setDob(new \DateTime("now"));
-        $applicant->setMa(new \DateTime("now"));*/
         $applicant->setNotes($notes);
         //var_dump($applicant);exit;
         try

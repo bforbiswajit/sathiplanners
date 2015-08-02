@@ -129,5 +129,5 @@ $(document).ready(function(){
             }  
         });
     }
-    dashBoardStat();
+    //dashBoardStat();
 });
