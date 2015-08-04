@@ -55,6 +55,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['test/route'] = 'Stat/Test';
 
 $route['applicant/add'] = 'ApplicantController/AddNew';
+$route['applicant/getall'] = 'ApplicantController/ReadAll';
+
 $route['plan/add'] = 'PlanController/AddNew';
 $route['mines/add'] = 'MinesController/AddNew';
 $route['document/attach'] = 'DocumentController/Attach';

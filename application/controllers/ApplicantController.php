@@ -47,19 +47,19 @@ class ApplicantController extends CI_Controller
             
             if(preg_match("/[a-zA-Z]{1,20}/", $city = isset($_POST['city']) ? trim($_POST['city']) : "") == 0)
             {
-                echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid City Name.", "Code" => "400")));
+                echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid City.", "Code" => "400")));
                 exit;
             }
             
             if(preg_match("/[a-zA-Z]{1,20}/", $district = isset($_POST['district']) ? trim($_POST['district']) : "") == 0)
             {
-                echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid District Name.", "Code" => "400")));
+                echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid District.", "Code" => "400")));
                 exit;
             }
             
             if(preg_match("/[a-zA-Z\s]{1,20}/", $state = isset($_POST['state']) ? trim($_POST['state']) : "") == 0)
             {
-                echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid State Name.", "Code" => "400")));
+                echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid State.", "Code" => "400")));
                 exit;
             }
 
@@ -89,5 +89,10 @@ class ApplicantController extends CI_Controller
         /*}
         else
             echo json_encode(array("status" => "error", "message" => array("Title" => "Authentication Failure.", "Code" => "401")));*/
+    }
+    
+    public function ReadAll(){
+        $this->load->model('Applicant_model');
+        echo json_encode($this->Applicant_model->ReadApplicant());
     }
 }
