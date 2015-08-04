@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var BASE_URL = "../index.php";                                              //cloud
     //var BASE_URL = "../first1me2/index.php";                                  //home
-    $("form").submit(function(event){	//GENERIC form submit function
+    /*$("form").submit(function(event){	//GENERIC form submit function
 	event.preventDefault();
         var form_id = "#" + $(this).closest("form").attr("id");
 	var form_data = new FormData(this);
@@ -34,9 +34,9 @@ $(document).ready(function(){
                 console.log("Status: " + textStatus + ", Error: " + errorThrown); 
             }
         });
-    });
+    });*/
     
-    function checkLogin(){
+    /*function checkLogin(){
         $.ajax({
             url : BASE_URL + "/user/isLoggedIn",
             type : "POST",
@@ -56,5 +56,5 @@ $(document).ready(function(){
             }  
         });
     }
-    checkLogin();
+    checkLogin();*/
 });

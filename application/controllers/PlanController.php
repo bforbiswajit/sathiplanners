@@ -31,7 +31,7 @@ class PlanController extends CI_Controller
             
             if(preg_match("/[a-zA-Z\s\.]{1,35}/", $rqp = isset($_POST['rqp']) ? trim($_POST['rqp']) : "") == 0)
             {
-                echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid Address Name.", "Code" => "400")));
+                echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid RQP Name.", "Code" => "400")));
                 exit;
             }
             

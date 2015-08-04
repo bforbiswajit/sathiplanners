@@ -51,18 +51,4 @@ class Applicant_model extends CI_Model {
             //return array("status" => "error", "message" => array("Title" => "Sorry, Failed to add new applicant, please try again.", "Code" => "503"));
         }
     }
-    
-    public function ReadApplicant(){
-        $allApplicants = $this->em->getRepository('Entities\Applicant')->findAll();
-        
-        $data = new stdClass();
-        $data->applicants = array();
-        for($i = 0; $i < count($allApplicants); $i++){
-            $applicant = new stdClass();
-            $applicant->name = $allApplicants[$i]->getName();
-            $applicant->businessTitle = $allApplicants[$i]->getBusinesstitle();
-            $data->applicants[$i] = $applicant;
-        }
-        return array("status" => "success", "data" => $data);
-    }
 }
