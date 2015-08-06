@@ -20,6 +20,7 @@
     <link href="<?php echo base_url('public/dist/css/skins/skin-blue.min.css'); ?>" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+    <script src="<?php echo base_url('public/js/formSubmission.js'); ?>"></script>
     <script src="<?php echo base_url('public/js/jqSource.js'); ?>"></script>
     <script src="<?php echo base_url('public/js/common.js'); ?>"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -174,8 +175,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="applicant.html"><i class="fa fa-plus-square-o"></i> Add New</a></li>
-                <li><a href="applicant.html"><i class="fa fa-th-list"></i> View</a></li>
+                <li><a href="applicant"><i class="fa fa-plus-square-o"></i> Add New</a></li>
+                <li><a href="applicant/getall"><i class="fa fa-th-list"></i> View</a></li>
               </ul>
             </li>
             

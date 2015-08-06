@@ -9,9 +9,18 @@ defined('BASEPATH') OR exit('Forbidden!');
 
 class ApplicantController extends CI_Controller
 {
+    function __construct(){
+        parent::__construct();
+        $this->load->library('session');
+        
+        $this->load->view('header');
+        $this->load->view('add_applicant');
+        $this->load->view('footer');
+    }
+        
     public function index()
     {
-        echo "Default Controller Action For Applicant.";
+        //echo "Default Controller Action For Applicant.";
     }
     
     public function AddNew(){
