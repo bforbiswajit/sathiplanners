@@ -58,11 +58,11 @@
         <div class="login-01">
             <div class="one-login  hvr-float-shadow">
                 <?php
-                    if(isset($err_msg) && $err_msg != ""){
+                    if($this->session->userdata('err_msg')){
                 ?>
                     <div id="login_err_msg" class="alert alert-danger alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <?php echo $err_msg;?>
+                        <?php echo $this->session->userdata('err_msg');?>
                     </div>
                 <?php
                     }
@@ -72,7 +72,7 @@
                     <h1></h1>
                     <span></span>
                 </div>
-                <form id="login_form" action="login/dologin">
+                <form id="login_form" method="post" action="login/dologin">
                     <ul>
                         <li>
                             <!--input type="text" class="text" id="username" style="width:90%" placeholder="example@example.com">
@@ -106,7 +106,6 @@
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="<?php echo base_url('public/js/formSubmission.js'); ?>" type="text/javascript"></script>
              <!-- REQUIRED JS SCRIPTS -->
         <!-- jQuery 2.1.4 -->
         <!-- Bootstrap 3.3.2 JS -->

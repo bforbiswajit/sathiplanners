@@ -6,13 +6,25 @@
         </div><!-- /.box-tools -->
     </div><!-- /.box-header -->
     <div class="box-body">
-        <div class="alert alert-success alert-dismissable" role="alert" id="applicantAddForm_success" style="display: none;">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        </div>
-        <div class="alert alert-success alert-dismissable" role="alert" id="applicantAddForm_danger" style="display: none;">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        </div>
-        <form id="applicantAddForm" action="/applicant/add" enctype="multipart/form-data">
+        <?php
+            if($this->session->userdata('err_msg')){
+        ?>
+            <div class="alert alert-success alert-dismissable" role="alert" id="applicantAddForm_success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <?php echo $this->session->userdata('err_msg');?>
+            </div>
+        <?php
+            }
+            elseif($this->session->userdata('success_msg')){
+        ?>
+            <div class="alert alert-success alert-dismissable" role="alert" id="applicantAddForm_danger">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <?php echo $this->session->userdata('success_msg');?>
+            </div>
+        <?php
+            }
+        ?>
+        <form id="applicantAddForm" method="post" action="applicant/add" enctype="multipart/form-data">
             <div class="modal-body" style="width: 50%; margin-left: 10%;">
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">Name</span>

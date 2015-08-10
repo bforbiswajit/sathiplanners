@@ -20,9 +20,14 @@ class Login_model extends CI_Model {
             return FALSE;
 
         $salt = strlen($password).substr($email, 0, strlen(strlen($email)));
-        if(crypt($password, $salt) != $user->getPassword())
+        if(crypt($password, $salt) != $user->getPassword()){
+            $data['err_msg'] = "Sorry, User/Password Mismatch.";
+            $this->session->set_userdata($data);
+            
             return FALSE;
+        }
         else{
+            $data['err_msg'] = "";
             $data['userId'] = $user->getId();
             $data['type'] = $user->getType();
             $data['name'] = $user->getName();

@@ -12,14 +12,13 @@ class ApplicantController extends CI_Controller
     function __construct(){
         parent::__construct();
         $this->load->library('session');
-        
-        $this->load->view('header');
-        $this->load->view('add_applicant');
-        $this->load->view('footer');
     }
         
     public function index()
     {
+        //$this->load->view('header');
+        $this->load->view('add_applicant');
+        //$this->load->view('footer');
         //echo "Default Controller Action For Applicant.";
     }
     
@@ -94,7 +93,8 @@ class ApplicantController extends CI_Controller
             }
             
             $this->load->model('Applicant_model');
-            echo json_encode($this->Applicant_model->CreateApplicant($name, $businessTitle, $mobile, $email, $addressLine, $city, $district, $state, $pin, $dob, $ma, $notes));
+            $this->Applicant_model->CreateApplicant($name, $businessTitle, $mobile, $email, $addressLine, $city, $district, $state, $pin, $dob, $ma, $notes);
+                $this->load->view('add_applicant');
         /*}
         else
             echo json_encode(array("status" => "error", "message" => array("Title" => "Authentication Failure.", "Code" => "401")));*/

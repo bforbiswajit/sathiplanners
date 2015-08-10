@@ -14,6 +14,10 @@ class DashboardController extends CI_Controller
         $this->load->library('session');
     }
     
+    public function RenderView(){
+        $this->load->view('dashboard');
+    }
+    
     public function index(){
         $this->load->view('header');
         $this->load->view('dashboard');

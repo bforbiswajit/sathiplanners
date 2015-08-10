@@ -159,7 +159,7 @@
           <ul class="sidebar-menu">
             <li class="header">Operations</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a class="navigationAjax" href="dashboard"><i class='fa fa-home'></i> <span>Home</span></a></li>
+            <li class="active"><a class="navigationAjax" href="dashboard/render"><i class='fa fa-home'></i> <span>Home</span></a></li>
             
             <li class="treeview">
               <a href="#">
@@ -174,14 +174,14 @@
             </li>
             
             <li class="treeview">
-              <a class="navigationAjax" href="#">
+              <a href="#">
                 <i class="fa fa-book"></i>
                 <span>Plan</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="plan"><i class="fa fa-plus-square-o"></i> Add New</a></li>
-                <li><a href="plan"><i class="fa fa-th-list"></i> View</a></li>
+                <li><a class="navigationAjax" href="plan"><i class="fa fa-plus-square-o"></i> Add New</a></li>
+                <li><a class="navigationAjax" href="plan/getall"><i class="fa fa-th-list"></i> View</a></li>
               </ul>
             </li>
             
@@ -192,8 +192,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="mines"><i class="fa fa-plus-square-o"></i> Add New</a></li>
-                <li><a href="mines"><i class="fa fa-th-list"></i> View</a></li>
+                <li><a class="navigationAjax" href="mines"><i class="fa fa-plus-square-o"></i> Add New</a></li>
+                <li><a class="navigationAjax" href="mines/getall"><i class="fa fa-th-list"></i> View</a></li>
               </ul>
             </li>
             
@@ -204,8 +204,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="documents.html"><i class="fa fa-paperclip"></i> Attach</a></li>
-                <li><a href="documents.html"><i class="fa fa-th-list"></i> View</a></li>
+                <li><a class="navigationAjax" href="documents"><i class="fa fa-paperclip"></i> Attach</a></li>
+                <li><a class="navigationAjax" href="documents/getall"><i class="fa fa-th-list"></i> View</a></li>
               </ul>
             </li>
             
@@ -216,8 +216,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="documents.html"><i class="fa fa-paperclip"></i> Attach</a></li>
-                <li><a href="documents.html"><i class="fa fa-th-list"></i> View</a></li>
+                <li><a class="navigationAjax" href="events"><i class="fa fa-paperclip"></i> Add New</a></li>
+                <li><a class="navigationAjax" href="events/getall"><i class="fa fa-th-list"></i> View</a></li>
               </ul>
             </li>
             
@@ -228,8 +228,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="documents.html"><i class="fa fa-paperclip"></i> Receive</a></li>
-                <li><a href="documents.html"><i class="fa fa-th-list"></i> Pay</a></li>
+                <li><a class="navigationAjax" href="payment"><i class="fa fa-paperclip"></i> Receive</a></li>
+                <li><a class="navigationAjax" href="payment/getall"><i class="fa fa-th-list"></i> Pay</a></li>
               </ul>
             </li>
           </ul><!-- /.sidebar-menu -->

@@ -43,11 +43,17 @@ class Applicant_model extends CI_Model {
             $this->em->persist($applicant);
             $this->em->flush();
             
-            return array("status" => "success", "data" => array("New Applicant Added Successfully."));
+            $data['err_msg'] = "";
+            $data['success_msg'] = "New Applicant Added Successfully.";
+            $this->session->set_userdata($data);
+            return TRUE;
         }
         catch(Exception $exc)
         {
-            return array("status" => "error", "message" => array("Title" => $exc->getTraceAsString(), "Code" => "503"));
+            $data['err_msg'] = "Sorry, failed to add applicant. Please try again later.";
+            $this->session->set_userdata($data);
+            return FALSE;
+            //return array("status" => "error", "message" => array("Title" => $exc->getTraceAsString(), "Code" => "503"));
             //return array("status" => "error", "message" => array("Title" => "Sorry, Failed to add new applicant, please try again.", "Code" => "503"));
         }
     }

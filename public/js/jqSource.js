@@ -1,7 +1,4 @@
 $(document).ready(function(){
-    var BASE_URL = "../index.php";                                              //cloud
-    //var BASE_URL = "../first1me2/index.php";                                  //home
-    
     function donutChart(totalAndroid, totalIos){
 	var chart = new CanvasJS.Chart("donut-chart",
 	{

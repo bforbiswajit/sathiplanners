@@ -39,9 +39,9 @@ class LoginController extends CI_Controller
             redirect('dashboard');
         else
         {
-            $response['err_msg'] = "Sorry, User/Password Mismatch.";
-            $this->load->view('login', $response);
-            //redirect('login');
+            /*$response['err_msg'] = "Sorry, User/Password Mismatch.";
+            $this->load->view('login', $response);*/
+            redirect('login');
         }
     }
     

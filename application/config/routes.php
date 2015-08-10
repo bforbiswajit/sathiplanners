@@ -63,6 +63,7 @@ $route['login/forget'] = 'LoginController/ForgetPassword';
 $route['login/check'] = 'LoginController/CheckSession';
 
 $route['dashboard'] = 'DashboardController';
+$route['dashboard/render'] = 'DashboardController/RenderView';
 
 $route['applicant'] = 'ApplicantController/index';
 $route['applicant/add'] = 'ApplicantController/AddNew';

@@ -18,12 +18,12 @@ class MinesController extends CI_Controller
     {
         if($this->session->userdata('userId'))
         {
-            $this->load->view('header');
+            //$this->load->view('header');
             $this->load->view('add_mine');
-            $this->load->view('footer');
+            //$this->load->view('footer');
         }
         else
-            $this->load->view('login');
+            redirect('login');
     }
     
     public function AddNew(){

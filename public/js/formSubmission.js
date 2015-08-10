@@ -1,5 +1,13 @@
 $(document).ready(function(){
-    $("form").submit(function(event){	//GENERIC form submit function
+    $(".navigationAjax").on("click", function(){
+        event.preventDefault();
+        url = this.href;
+        console.log("ajax ",url);
+        //loading.show();
+        customAjax(url);
+    });
+    
+    $(document).on('submit', 'form', function(event){	//GENERIC form submit function
 	event.preventDefault();
         var form_id = "#" + $(this).closest("form").attr("id");
 	var form_data = new FormData(this);
@@ -16,20 +24,29 @@ $(document).ready(function(){
             //headers : {"Api-Key": "1234"},
             data : form_data,
             success : function(data){
-                console.log(data);
-                //response = JSON.parse(data);
-                /*if(response.status == "success"){
-                    //console.log(response.data[0]);
-                    $(form_id + "_success").text(response.data[0]).fadeIn(2000).fadeOut(2000);
-                }
-                else{
-                    $(form_id + "_danger").text("Error Code #" + response.message.Code + ", " + response.message.Title).fadeIn(2000);
-                }
-                $(form_id + "input[type='reset']").trigger("click");*/
+                console.log("loaded");
+                $("#replacable").empty();
+                $("#replacable").html(data);
             },
             error : function(XMLHttpRequest, textStatus, errorThrown){ 
                 console.log("Status: " + textStatus + ", Error: " + errorThrown); 
             }
         });
     });
+    
+    function customAjax(url){
+        $.ajax({
+            url:url,
+            type:"GET",
+            success:function(data){
+                //loading.hide();
+                $("#replacable").empty();
+                $("#replacable").html(data);
+            },
+            error:function(){
+                //loading.hide();
+                alert("Internal Server Error! please try after some time")
+            }
+        });	
+    }
 });
