@@ -4,7 +4,7 @@
         <title>Sathi Planners Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="keywords" content="Sathi Planners Login"./>
+        <meta name="keywords" content="Sathi Planners Login"/>
         <link href="<?php echo base_url('public/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />
         <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -57,10 +57,16 @@
         <!--/start-login-one-->
         <div class="login-01">
             <div class="one-login  hvr-float-shadow">
-                <div id="login_err_msg" class="alert alert-danger alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Warning!</strong> Better check yourself, you're not looking too good.
-                </div>
+                <?php
+                    if(isset($err_msg) && $err_msg != ""){
+                ?>
+                    <div id="login_err_msg" class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <?php echo $err_msg;?>
+                    </div>
+                <?php
+                    }
+                ?>
                 <div class="one-login-head">
                     <img src="<?php echo base_url('public/dist/img/SP_Logo.png'); ?>" width="150px" height="150px" alt="Sathi Planners"/>
                     <h1></h1>
@@ -73,13 +79,13 @@
                             <i class=" icon user"></i-->
                             <div class="input-group">
                                 <span class="input-group-addon glyphicon glyphicon-user" style="background-color: initial;"></span>    
-                                <input type="text" class="text" id="username" name="email" style="width:90%" placeholder="example@example.com">
+                                <input type="text" class="text" id="username" name="email" style="width:90%" placeholder="example@example.com" required>
                             </div>
                         </li>
                         <li>
                             <div class="input-group">
                                 <span class="input-group-addon glyphicon glyphicon-lock" style="background-color: initial;"></span>    
-                                <input type="password" id="password" name="password" style="width:90%" value="" placeholder="Password">
+                                <input type="password" id="password" name="password" style="width:90%" value="" placeholder="Password" required>
                             </div>
                         </li>
                     </ul>

@@ -24,8 +24,8 @@ class LoginController extends CI_Controller
     public function Login(){
         if(preg_match("/^[a-z][a-z0-9\.\_]*@[a-z][a-z0-9\.]+[a-z]$/", $email = isset($_POST['email']) ? trim($_POST['email']) : "") == 0)
         {
-            echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid Email Address.", "Code" => "400")));
-            exit;
+            $response['err_msg'] = "Please enter a valid email.";
+            $this->load->view('login', $response);
         }
         
         if(preg_match("/[a-zA-Z0-9\'\"\s\.\,\-\+\/\\\]{4,160}/", $password = isset($_POST['password']) ? trim($_POST['password']) : "") == 0)
@@ -38,7 +38,11 @@ class LoginController extends CI_Controller
         if($this->Login_model->Login($email, $password))
             redirect('dashboard');
         else
-            redirect('login');
+        {
+            $response['err_msg'] = "Sorry, User/Password Mismatch.";
+            $this->load->view('login', $response);
+            //redirect('login');
+        }
     }
     
     public function Logout(){

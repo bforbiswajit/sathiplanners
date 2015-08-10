@@ -21,8 +21,6 @@
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
     <script src="<?php echo base_url('public/js/formSubmission.js'); ?>"></script>
-    <script src="<?php echo base_url('public/js/jqSource.js'); ?>"></script>
-    <script src="<?php echo base_url('public/js/common.js'); ?>"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -63,12 +61,7 @@
   </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
-
-        <div id="progress_container">
-            <img id="loader" src="<?php echo base_url('public/dist/img/loader.gif'); ?>">
-        </div>
-        
-      <!-- Main Header -->
+    <!-- Main Header -->
       <header class="main-header">
 
         <!-- Logo -->
@@ -166,7 +159,7 @@
           <ul class="sidebar-menu">
             <li class="header">Operations</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="dashboard.html"><i class='fa fa-home'></i> <span>Home</span></a></li>
+            <li class="active"><a class="navigationAjax" href="dashboard"><i class='fa fa-home'></i> <span>Home</span></a></li>
             
             <li class="treeview">
               <a href="#">
@@ -175,20 +168,20 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="applicant"><i class="fa fa-plus-square-o"></i> Add New</a></li>
-                <li><a href="applicant/getall"><i class="fa fa-th-list"></i> View</a></li>
+                <li><a class="navigationAjax" href="applicant"><i class="fa fa-plus-square-o"></i> Add New</a></li>
+                <li><a class="navigationAjax" href="applicant/getall"><i class="fa fa-th-list"></i> View</a></li>
               </ul>
             </li>
             
             <li class="treeview">
-              <a href="#">
+              <a class="navigationAjax" href="#">
                 <i class="fa fa-book"></i>
                 <span>Plan</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="plan.html"><i class="fa fa-plus-square-o"></i> Add New</a></li>
-                <li><a href="plan.html"><i class="fa fa-th-list"></i> View</a></li>
+                <li><a href="plan"><i class="fa fa-plus-square-o"></i> Add New</a></li>
+                <li><a href="plan"><i class="fa fa-th-list"></i> View</a></li>
               </ul>
             </li>
             
@@ -199,8 +192,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="mines.html"><i class="fa fa-plus-square-o"></i> Add New</a></li>
-                <li><a href="mines.html"><i class="fa fa-th-list"></i> View</a></li>
+                <li><a href="mines"><i class="fa fa-plus-square-o"></i> Add New</a></li>
+                <li><a href="mines"><i class="fa fa-th-list"></i> View</a></li>
               </ul>
             </li>
             
@@ -260,6 +253,6 @@
 		<!-- Main content -->
 		<section class="content">
 		<!-- Your Page Content Here -->
-		<section class="content">
+		<section class="content" id="replacable">
 			<!-- Small boxes (Stat box) -->
 			<!-- content -->

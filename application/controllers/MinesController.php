@@ -7,11 +7,23 @@
 
 defined('BASEPATH') OR exit('Forbidden!');
 
-class PlanController extends CI_Controller
+class MinesController extends CI_Controller
 {
+    function __construct(){
+        parent::__construct();
+        $this->load->library('session');
+    }
+    
     public function index()
     {
-        echo "Default Controller Action For Applicant.";
+        if($this->session->userdata('userId'))
+        {
+            $this->load->view('header');
+            $this->load->view('add_mine');
+            $this->load->view('footer');
+        }
+        else
+            $this->load->view('login');
     }
     
     public function AddNew(){

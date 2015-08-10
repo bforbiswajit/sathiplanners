@@ -16,9 +16,8 @@ $(document).ready(function(){
             //headers : {"Api-Key": "1234"},
             data : form_data,
             success : function(data){
-                document.write(data);
                 console.log(data);
-                response = JSON.parse(data);
+                //response = JSON.parse(data);
                 /*if(response.status == "success"){
                     //console.log(response.data[0]);
                     $(form_id + "_success").text(response.data[0]).fadeIn(2000).fadeOut(2000);

@@ -68,6 +68,9 @@ $route['applicant'] = 'ApplicantController/index';
 $route['applicant/add'] = 'ApplicantController/AddNew';
 $route['applicant/getall'] = 'ApplicantController/ReadAll';
 
+$route['plan'] = 'PlanController';
 $route['plan/add'] = 'PlanController/AddNew';
+
+$route['mines'] = 'MinesController';
 $route['mines/add'] = 'MinesController/AddNew';
 $route['document/attach'] = 'DocumentController/Attach';
