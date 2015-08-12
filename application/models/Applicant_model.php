@@ -57,4 +57,13 @@ class Applicant_model extends CI_Model {
             //return array("status" => "error", "message" => array("Title" => "Sorry, Failed to add new applicant, please try again.", "Code" => "503"));
         }
     }
+    
+    public function ReadApplicant($key){
+        $con = $this->em->getConnection();
+        $query = $con->prepare("select id, name, businessTitle from applicant where id like '" . $key . "%' or name like '" . $key . "%' or businessTitle like '" . $key . "%'");
+        $query->execute();
+        $data = $query->fetchAll();
+        
+        return ($data != NULL || $data != FALSE) ? json_encode(array("status" => "success", "data" => $data)) : json_encode(array("status" => "fail", "data" => "--No Match Found."));
+    }
 }

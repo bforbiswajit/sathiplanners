@@ -18,9 +18,9 @@ class PlanController extends CI_Controller
     {
         if($this->session->userdata('userId'))
         {
-            $this->load->view('header');
-            $this->load->view('plan');
-            $this->load->view('footer');
+            //$this->load->view('header');
+            $this->load->view('create_plan');
+            //$this->load->view('footer');
         }
         else
             $this->load->view('login');
@@ -47,7 +47,7 @@ class PlanController extends CI_Controller
                 exit;
             }
             
-            if(preg_match("/[0-9\.]{1,10}/", $amount = isset($_POST['amount']) ? trim($_POST['amount']) : "") == 0)
+            if(preg_match("/[1-9][0-9\.]{1,10}/", $amount = isset($_POST['amount']) ? trim($_POST['amount']) : "") == 0)
             {
                 echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid Amount.", "Code" => "400")));
                 exit;

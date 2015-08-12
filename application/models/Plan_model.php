@@ -20,9 +20,11 @@ class Plan_model extends CI_Model {
         
         $plan->setType($type);
         $plan->setApplicantid($this->em->getRepository('Entities\Applicant')->find($applicantId));
+        $plan->setDateofregistration(new \DateTime("now"));
         $plan->setRqp($rqp);
         $plan->setAmount($amount);
         
+        $con = $this->em->getConnection();
         $query = $con->prepare("select fileNo from plan where type = '$type' order by id desc limit 1");
         $query->execute();
         $data = $query->fetch();
@@ -42,7 +44,11 @@ class Plan_model extends CI_Model {
             $this->em->flush();
             
             $fileNumber = $plan->getFileno();
-            return array("status" => "success", "data" => array("New Plan Added Successfully.\nFile No. " . $fileNumber));
+            $data['err_msg'] = "";
+            $data['success_msg'] = "New Plan Added Successfully.\nFile No. " . $fileNumber;
+            $this->session->set_userdata($data);
+            return TRUE;
+            //return array("status" => "success", "data" => array("New Plan Added Successfully.\nFile No. " . $fileNumber));
         }
         catch(Exception $exc)
         {

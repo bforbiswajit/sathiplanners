@@ -1,6 +1,6 @@
 	<div class="box box-warning">
 		<div class="box-header with-border">
-			<h3 class="box-title">Add New Mine</h3>
+			<h3 class="box-title">Create New Plan</h3>
 			<div class="box-tools pull-right">
 				<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 			</div><!-- /.box-tools -->
@@ -8,8 +8,13 @@
 		<div class="box-body">
 			<div class="alert alert-success alert-dismissable" role="alert" id="planAddForm_success" style="display: none;"></div>
 			<div class="alert alert-success alert-dismissable" role="alert" id="planAddForm_danger" style="display: none;"></div>
-			<form id="planAddForm" action="mines/add" enctype="multipart/form-data">
+			<form id="planAddForm" action="/plan/add" enctype="multipart/form-data">
 				<div class="modal-body" style="width: 50%; margin-left: 10%;">
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Select Applicant</span>
+						<input type="text" class="form-control" placeholder="Enter Applicant #ID/ Name / Business Title" aria-describedby="basic-addon1" name="applicantId" id="applicantId" required>
+						<datalist id="applicantList"></datalist>
+					</div><br/>
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">Type of Assignment</span>
 						<select name="vendorId" id="vendorList" style="height: 2em; width: 100%;" required>

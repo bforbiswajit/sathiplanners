@@ -66,6 +66,7 @@ $route['dashboard'] = 'DashboardController';
 $route['dashboard/render'] = 'DashboardController/RenderView';
 
 $route['applicant'] = 'ApplicantController/index';
+$route['applicant/autofill'] = 'ApplicantController/GetApplicant';
 $route['applicant/add'] = 'ApplicantController/AddNew';
 $route['applicant/getall'] = 'ApplicantController/ReadAll';
 

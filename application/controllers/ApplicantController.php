@@ -94,9 +94,20 @@ class ApplicantController extends CI_Controller
             
             $this->load->model('Applicant_model');
             $this->Applicant_model->CreateApplicant($name, $businessTitle, $mobile, $email, $addressLine, $city, $district, $state, $pin, $dob, $ma, $notes);
-                $this->load->view('add_applicant');
+            $this->load->view('add_applicant');
         /*}
         else
             echo json_encode(array("status" => "error", "message" => array("Title" => "Authentication Failure.", "Code" => "401")));*/
+    }
+    
+    public function GetApplicant(){
+        if(preg_match("/[a-zA-Z0-9\s\.]{1,15}/", $key = isset($_POST['applicantId']) ? trim($_POST['applicantId']) : "") == 0)
+        {
+            echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid Search Query.", "Code" => "400")));
+            exit;
+        }
+        
+        $this->load->model('Applicant_model');
+        echo $this->Applicant_model->ReadApplicant($key);
     }
 }
