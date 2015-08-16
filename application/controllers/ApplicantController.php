@@ -110,4 +110,10 @@ class ApplicantController extends CI_Controller
         $this->load->model('Applicant_model');
         echo $this->Applicant_model->ReadApplicant($key);
     }
+    
+    public function ReadAll(){
+        $this->load->model('Applicant_model');
+        $response = $this->Applicant_model->applicantListing();
+        
+    }
 }

@@ -15,12 +15,16 @@ class Plan_model extends CI_Model {
         $this->em = $this->doctrine->em;
     }
     
-    public function CreatePlan($type, $applicantId, $rqp, $amount){
+    public function CreatePlan($type, $applicantId, $dateOfRegistration, $rqp, $amount){
         $plan = new Entities\Plan;
         
         $plan->setType($type);
         $plan->setApplicantid($this->em->getRepository('Entities\Applicant')->find($applicantId));
-        $plan->setDateofregistration(new \DateTime("now"));
+        if($dateOfRegistration == NULL)
+            $plan->setDateofregistration(new \DateTime("now"));
+        else
+            $plan->setDateofregistration(new \DateTime((string)$dateOfRegistration));
+        
         $plan->setRqp($rqp);
         $plan->setAmount($amount);
         
@@ -29,15 +33,14 @@ class Plan_model extends CI_Model {
         $query->execute();
         $data = $query->fetch();
         
-        if($data == NULL)
+        if($data == NULL || $data == FALSE)
             $fileNo = "SPPL/" . $type . "/1";
         else{
-            $part = explode('/', $data);
-            $fileNo = "SPPL" . $type . ++$part[2];  //SPPL/MPEC/1
+            $part = explode('/', $data['fileNo']);
+            $fileNo = "SPPL/" . $type . "/" . ++$part[2];  //SPPL/MPEC/1
         }
         
         $plan->setFileno($fileNo);
-        //var_dump($applicant);exit;
         try
         {
             $this->em->persist($plan);
@@ -47,8 +50,8 @@ class Plan_model extends CI_Model {
             $data['err_msg'] = "";
             $data['success_msg'] = "New Plan Added Successfully.\nFile No. " . $fileNumber;
             $this->session->set_userdata($data);
-            return TRUE;
-            //return array("status" => "success", "data" => array("New Plan Added Successfully.\nFile No. " . $fileNumber));
+            //return TRUE;
+            return array("status" => "success", "data" => array("New Plan Added Successfully.\nFile No. " . $fileNumber));
         }
         catch(Exception $exc)
         {

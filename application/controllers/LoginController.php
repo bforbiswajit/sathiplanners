@@ -24,14 +24,16 @@ class LoginController extends CI_Controller
     public function Login(){
         if(preg_match("/^[a-z][a-z0-9\.\_]*@[a-z][a-z0-9\.]+[a-z]$/", $email = isset($_POST['email']) ? trim($_POST['email']) : "") == 0)
         {
-            $response['err_msg'] = "Please enter a valid email.";
+            $response['err_msg'] = "Please enter a valid email. Error Code: #400.";
             $this->load->view('login', $response);
         }
         
         if(preg_match("/[a-zA-Z0-9\'\"\s\.\,\-\+\/\\\]{4,160}/", $password = isset($_POST['password']) ? trim($_POST['password']) : "") == 0)
         {
-            echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid Password.", "Code" => "400")));
-            exit;
+            /*echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid Password.", "Code" => "400")));
+            exit;*/
+            $response['err_msg'] = "Please enter a valid Password. Error Code: #400.";
+            $this->load->view('login', $response);
         }
         
         $this->load->model('Login_model');

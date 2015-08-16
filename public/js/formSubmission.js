@@ -7,10 +7,14 @@ $(document).ready(function(){
         customAjax(url);
     });
     
-    $("#replacable").on("keyup", "#applicantId", function(event){
+    $("#replacable").on("click", "#lookupBtn", function(event){
+        $("#lookupApplicantModal").modal("show");
+    });
+    
+    $("#replacable").on("keyup", "#lookupApplicant", function(event){
         if((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 8 || event.keyCode == 46)
         {
-            search_key = $.trim($("#applicantId").val());
+            search_key = $.trim($("#lookupApplicant").val());
             if(search_key != "")
             {
                 $.ajax({
@@ -22,17 +26,17 @@ $(document).ready(function(){
                     success : function(data){
                         response = JSON.parse(data);
                         if(response.status == "success"){
-                            console.log(response.data);
-                            $("#applicantList").empty();
+                            //console.log(response.data);
+                            $("#lookupApplicantTable").empty();
                             for(var i=0; i<response.data.length; i++)
                             {
-                                $("#applicantList").append("<option value='" + "#" + response.data[i].id + " - " + response.data[i].name + " " + response.data[i].businessTitle + "'>");
+                                $("#lookupApplicantTable").append("<tr id='" + response.data[i].id + "'><td>" + response.data[i].id + "</td><td>" + response.data[i].name + "</td><td>" + response.data[i].businessTitle + "</td><td>" + response.data[i].city + "</td></tr>");
                             }
                         }
                         else{
-                            console.log("Error : ", response.data);
-                            $("#applicantList").empty();
-                            $("#applicantList").append("<option value='" + response.data + "'>");
+                            //console.log("Error : ", response.data);
+                            $("#lookupApplicantTable").empty();
+                            $("#lookupApplicantTable").append("<tr id='0'><td colspan='4'>" + response.data + "</td></tr>");
                         }
                     },
 
@@ -42,6 +46,12 @@ $(document).ready(function(){
                 });
             }
         }
+    });
+    
+    $("#replacable").on("click", "#lookupApplicantTable > tr", function(){
+        $("#applicantLookup").val($(':nth-child(2)', this).html() + " - " + $(':nth-child(3)', this).html());
+        $("#selectedApplicantId").val($(this).attr("id"));
+        $("#lookupApplicantModal").modal("hide");
     });
     
     $(document).on('submit', 'form', function(event){	//GENERIC form submit function

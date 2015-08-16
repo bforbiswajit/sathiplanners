@@ -50,7 +50,7 @@ class Applicant_model extends CI_Model {
         }
         catch(Exception $exc)
         {
-            $data['err_msg'] = "Sorry, failed to add applicant. Please try again later.";
+            $data['err_msg'] = "Sorry, failed to add applicant, Please try again later. Error Code: #503.";
             $this->session->set_userdata($data);
             return FALSE;
             //return array("status" => "error", "message" => array("Title" => $exc->getTraceAsString(), "Code" => "503"));
@@ -60,10 +60,30 @@ class Applicant_model extends CI_Model {
     
     public function ReadApplicant($key){
         $con = $this->em->getConnection();
-        $query = $con->prepare("select id, name, businessTitle from applicant where id like '" . $key . "%' or name like '" . $key . "%' or businessTitle like '" . $key . "%'");
+        $query = $con->prepare("select id, name, businessTitle, city from applicant where id like '" . $key . "%' or name like '" . $key . "%' or businessTitle like '" . $key . "%' or city like '" . $key . "%'");
         $query->execute();
         $data = $query->fetchAll();
         
         return ($data != NULL || $data != FALSE) ? json_encode(array("status" => "success", "data" => $data)) : json_encode(array("status" => "fail", "data" => "--No Match Found."));
+    }
+    
+    public function applicantListing(){
+        $allApplicants = $this->doctrine->em->getRepository('Entities\Applicant')->findAll();
+        $data = array();
+        for($i = 0; $i < count($allApplicants); $i++){
+            $applicant = new stdClass();
+            $applicant->id = $allApplicants[$i]->getId();
+            $applicant->name = $allApplicants[$i]->getName();
+            $applicant->businessTitle = $allApplicants[$i]->getBusinesstitle();
+            $applicant->mobile = $allApplicants[$i]->getMobile();
+            $applicant->city = $allApplicants[$i]->getCity();
+            $applicant->district = $allApplicants[$i]->getDistrict();
+            $applicant->registeredOn = $allApplicants[$i]->getRegisteredon();
+            
+            $data[$i] = $applicant;
+        }
+        if(count($data) > 0)
+            return array("status" => "success", "data" => $data);
+        return array("status" => "error", "message" => array("No data found."));
     }
 }
