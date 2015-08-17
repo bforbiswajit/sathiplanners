@@ -22,7 +22,7 @@
                     <?php
                         }
                     ?>
-                    <form id="planAddForm" action="plan/add" enctype="multipart/form-data">
+                    <form id="planAddForm" action="/plan/add" enctype="multipart/form-data">
                             <div class="modal-body" style="width: 50%; margin-left: 10%;">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="basic-addon1">Applicant #</span>
