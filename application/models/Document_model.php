@@ -61,4 +61,8 @@ class Document_model extends CI_Model {
             return array("status" => "error", "message" => array("Title" => "Sorry, Failed to attach document, please try again.", "Code" => "503"));
         }
     }
+    
+    public function ReadPendingDocument($fileNo){
+        
+    }
 }
