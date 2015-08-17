@@ -66,4 +66,9 @@ class PlanController extends CI_Controller
         else
             echo json_encode(array("status" => "error", "message" => array("Title" => "Authentication Failure.", "Code" => "401")));*/
     }
+    
+    public function ReadAll(){
+        $this->load->model('Plan_model');
+        $this->load->view('view_plan', $this->Plan_model->planListing());
+    }
 }

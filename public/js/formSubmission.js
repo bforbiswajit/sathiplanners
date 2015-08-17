@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    var BASE_URL = "../index.php";
+    
     $(".navigationAjax").on("click", function(){
         event.preventDefault();
         url = this.href;
@@ -17,8 +19,9 @@ $(document).ready(function(){
             search_key = $.trim($("#lookupApplicant").val());
             if(search_key != "")
             {
+                url = BASE_URL + "/applicant/autofill";
                 $.ajax({
-                    url : "applicant/autofill",
+                    url : url,
                     type : "POST",
                     //headers : {"Api-Key": "1234"},
                     data : {"applicantId" : search_key},
@@ -59,7 +62,7 @@ $(document).ready(function(){
         var form_id = "#" + $(this).closest("form").attr("id");
 	var form_data = new FormData(this);
 	//var form_data = $(this).serialize();
-        var url = $(form_id).attr("action");
+        var url = BASE_URL + $(form_id).attr("action");
         //console.log("form data - ", form_data);
         $.ajax({
             url : url,

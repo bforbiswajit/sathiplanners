@@ -11,7 +11,6 @@ class Applicant_model extends CI_Model {
     public function __construct()
     {
         parent::__construct();
-        //$this->load->library('upload');
         $this->em = $this->doctrine->em;
     }
     
@@ -84,6 +83,6 @@ class Applicant_model extends CI_Model {
         }
         if(count($data) > 0)
             return array("status" => "success", "data" => $data);
-        return array("status" => "error", "message" => array("No data found."));
+        return array("status" => "error", "message" => "No data found.");
     }
 }

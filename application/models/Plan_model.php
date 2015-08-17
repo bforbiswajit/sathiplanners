@@ -59,4 +59,24 @@ class Plan_model extends CI_Model {
             return array("status" => "error", "message" => array("Title" => "Sorry, Failed to add new plan, please try again.", "Code" => "503"));
         }
     }
+    
+    public function planListing(){
+        $allPlans = $this->doctrine->em->getRepository('Entities\Plan')->findAll();
+        $data = array();
+        for($i = 0; $i < count($allPlans); $i++){
+            $plan = new stdClass();
+            $plan->id = $allPlans[$i]->getId();
+            $plan->fileNo = $allPlans[$i]->getFileno();
+            $plan->type = $allPlans[$i]->getType();
+            $plan->applicant = $allPlans[$i]->getApplicantid()->getName();
+            $plan->registeredOn = $allPlans[$i]->getDateofregistration();
+            $plan->rqp = $allPlans[$i]->getRqp();
+            $plan->amount = $allPlans[$i]->getAmount();
+            
+            $data[$i] = $plan;
+        }
+        if(count($data) > 0)
+            return array("status" => "success", "data" => $data);
+        return array("status" => "error", "message" => "No data found.");
+    }
 }

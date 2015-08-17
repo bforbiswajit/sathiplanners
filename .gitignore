@@ -3,5 +3,4 @@ application/models/Entities/*
 application/config/database.php
 vendor/*
 system/*
-public/images/deal/*
 *.xml

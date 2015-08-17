@@ -113,7 +113,6 @@ class ApplicantController extends CI_Controller
     
     public function ReadAll(){
         $this->load->model('Applicant_model');
-        $response = $this->Applicant_model->applicantListing();
-        
+        $this->load->view('view_applicant', $this->Applicant_model->applicantListing());
     }
 }

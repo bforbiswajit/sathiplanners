@@ -72,6 +72,7 @@ $route['applicant/getall'] = 'ApplicantController/ReadAll';
 
 $route['plan'] = 'PlanController';
 $route['plan/add'] = 'PlanController/AddNew';
+$route['plan/getall'] = 'PlanController/ReadAll';
 
 $route['mines'] = 'MinesController';
 $route['mines/add'] = 'MinesController/AddNew';
