@@ -63,4 +63,15 @@ class DocumentController extends CI_Controller
         else
             echo json_encode(array("status" => "error", "message" => array("Title" => "Authentication Failure.", "Code" => "401")));*/
     }
+    
+    public function ViewPendingDocs(){
+        if(preg_match("/SPPL\/(MP|EC|MPEC)\/[0-9]{1,3}/", $fileNo = isset($_POST['fileNo']) ? trim($_POST['fileNo']) : "") == 0)
+        {
+            echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid File No (Example - SPPL/MPEC/15).", "Code" => "400")));
+            exit;
+        }
+        
+        $this->load->model('Document_model');
+        echo json_encode($this->Document_model->ReadPendingDocument($fileNo));
+    }
 }
