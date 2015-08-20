@@ -71,4 +71,9 @@ class MinesController extends CI_Controller
         else
             echo json_encode(array("status" => "error", "message" => array("Title" => "Authentication Failure.", "Code" => "401")));*/
     }
+    
+    public function ReadAll(){
+        $this->load->model('Mines_model');
+        $this->load->view('view_mines', $this->Mines_model->minesListing());
+    }
 }

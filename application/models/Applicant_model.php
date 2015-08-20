@@ -62,13 +62,35 @@ class Applicant_model extends CI_Model {
         }
     }
     
-    public function ReadApplicant($key){
+    public function ReadPartialApplicant($key){
         $con = $this->em->getConnection();
         $query = $con->prepare("select id, name, businessTitle, city from applicant where id like '" . $key . "%' or name like '" . $key . "%' or businessTitle like '" . $key . "%' or city like '" . $key . "%'");
         $query->execute();
         $data = $query->fetchAll();
         
         return ($data != NULL || $data != FALSE) ? json_encode(array("status" => "success", "data" => $data)) : json_encode(array("status" => "fail", "data" => "--No Match Found."));
+    }
+    
+    public function ReadApplicant($applicantId){
+        $thisApplicant = $this->doctrine->em->getRepository('Entities\Applicant')->find($applicantId);
+        
+        $applicant = new stdClass();
+        $applicant->id = $thisApplicant->getId();
+        $applicant->name = $thisApplicant->getName();
+        $applicant->businessTitle = $thisApplicant->getBusinesstitle();
+        $applicant->mobile = $thisApplicant->getMobile();
+        $applicant->email = $thisApplicant->getEmail();
+        $applicant->addressLine = $thisApplicant->getAddressline();
+        $applicant->city = $thisApplicant->getCity();
+        $applicant->district = $thisApplicant->getDistrict();
+        $applicant->state = $thisApplicant->getState();
+        $applicant->pin = $thisApplicant->getPin();
+        $applicant->dob = $thisApplicant->getDob();
+        $applicant->ma = $thisApplicant->getMa();
+        $applicant->registeredOn = $thisApplicant->getRegisteredon();
+        $applicant->notes = $thisApplicant->getNotes();
+        
+        return $applicant;
     }
     
     public function applicantListing(){

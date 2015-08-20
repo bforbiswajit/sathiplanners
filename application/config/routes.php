@@ -69,6 +69,7 @@ $route['applicant'] = 'ApplicantController/index';
 $route['applicant/autofill'] = 'ApplicantController/GetApplicant';
 $route['applicant/add'] = 'ApplicantController/AddNew';
 $route['applicant/getall'] = 'ApplicantController/ReadAll';
+$route['applicant/getthis'] = 'ApplicantController/ReadOne';
 
 $route['plan'] = 'PlanController';
 $route['plan/add'] = 'PlanController/AddNew';
@@ -76,4 +77,6 @@ $route['plan/getall'] = 'PlanController/ReadAll';
 
 $route['mines'] = 'MinesController';
 $route['mines/add'] = 'MinesController/AddNew';
+$route['mines/getall'] = 'MinesController/ReadAll';
+
 $route['document/attach'] = 'DocumentController/Attach';

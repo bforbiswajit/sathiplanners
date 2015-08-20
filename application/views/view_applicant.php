@@ -35,3 +35,71 @@
                     </table>
                 </div>
         </div>
+
+        
+
+        <!--Edit Deal Modal-->
+        <div class="modal fade" id="editApplicantModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">View/Edit Applicant Details :</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box-body">
+                            <form id="applicantEditForm" action="/applicant/Edit" enctype="multipart/form-data">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Name&nbsp;<font color="red">*</font></span>
+                                    <input type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" name="name" id="name" value="<?php var_dump($applicant)?>" required>
+                                </div><br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Business Title</span>
+                                    <input type="text" class="form-control" placeholder="Company Name (Optional)" aria-describedby="basic-addon1" name="businessTitle" id="businessTitle">
+                                </div><br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Mobile&nbsp;<font color="red">*</font></span>
+                                    <input type="text" class="form-control" placeholder="10 Digit Mobile No." aria-describedby="basic-addon1" name="mobile" id="mobile" required>
+                                </div><br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Email</span>
+                                    <input type="text" class="form-control" placeholder="Email Address (Optional)." aria-describedby="basic-addon1" name="email" id="email">
+                                </div><br/>
+                                <div class="input-group">
+                                    Address&nbsp;<font color="red">*</font><br/><textarea name="addressLine" id="addressLine" rows="5" cols="80" required></textarea>
+                                </div><br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">City&nbsp;<font color="red">*</font></span>
+                                    <input type="text" class="form-control" placeholder="City/Town/Police Station." aria-describedby="basic-addon1" name="city" id="city" required>
+                                </div><br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">District&nbsp;<font color="red">*</font></span>
+                                    <input type="text" class="form-control" placeholder="District." aria-describedby="basic-addon1" name="district" id="district" required>
+                                </div><br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">State&nbsp;<font color="red">*</font></span>
+                                    <input type="text" class="form-control" placeholder="State." aria-describedby="basic-addon1" name="state" id="state" required>
+                                </div><br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">P.I.N.&nbsp;<font color="red">*</font></span>
+                                    <input type="text" class="form-control" placeholder="6 Digit P.I.N." aria-describedby="basic-addon1" name="PIN" id="PIN" required>
+                                </div><br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Date of Birth</span>
+                                    <input type="date" class="form-control" aria-describedby="basic-addon1" name="dob" id="dob">
+                                </div><br/>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">Marriage Anniversary</span>
+                                    <input type="date" class="form-control" aria-describedby="basic-addon1" name="ma" id"ma">
+                                </div><br/>
+                                <div class="input-group">
+                                    Notes/Remarks <br/><textarea name="notes" id="notes" rows="5" cols="80"></textarea>
+                                </div><br/>
+                                <div class="modal-footer">
+                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>

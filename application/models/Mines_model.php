@@ -18,7 +18,7 @@ class Mines_model extends CI_Model {
     
     public function CreateMines($area, $leasType, $district, $mouza, $notes, $fileNo){
         //$planId = fileNoToPlanId($fileNo);
-        $plan = $this->doctrine->em->getRepository('Entities\Plan')->findOneBy(array("fileno" => $fileNo));
+        $plan = $this->em->getRepository('Entities\Plan')->findOneBy(array("fileno" => strtoupper($fileNo)));
         if($plan == FALSE){
             $data['err_msg_mine'] = "Please insert a valid File No. Error Code #400.";
             $this->session->set_userdata($data);
@@ -33,7 +33,7 @@ class Mines_model extends CI_Model {
         $mines->setLeastype($leasType);
         $mines->setMouza($mouza);
         $mines->setNotes($notes);
-        $mines->setPlanid($plan->getId());
+        $mines->setPlanid($plan);
         try
         {
             $this->em->persist($mines);
@@ -53,5 +53,25 @@ class Mines_model extends CI_Model {
             //return array("status" => "error", "message" => array("Title" => $exc->getTraceAsString(), "Code" => "503"));
             //return array("status" => "error", "message" => array("Title" => "Sorry, Failed to add new mines, please try again.", "Code" => "503"));
         }
+    }
+    
+    public function minesListing(){
+        $allMines = $this->em->getRepository('Entities\Mines')->findAll();
+        $data = array();
+        for($i = 0; $i < count($allMines); $i++){
+            $mine = new stdClass();
+            $mine->id = $allMines[$i]->getId();
+            $mine->fileNo = $this->em->getRepository('Entities\Plan')->find($allMines[$i]->getPlanid())->getFileno();
+            $mine->area = $allMines[$i]->getArea();
+            $mine->leasType = $allMines[$i]->getLeastype();
+            $mine->district = $allMines[$i]->getDistrict();
+            $mine->mouza = $allMines[$i]->getMouza();
+            $mine->notes = $allMines[$i]->getNotes();
+            
+            $data[$i] = $mine;
+        }
+        if(count($data) > 0)
+            return array("status" => "success", "data" => $data);
+        return array("status" => "error", "message" => "No data found.");
     }
 }

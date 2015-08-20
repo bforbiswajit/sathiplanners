@@ -13,6 +13,42 @@ $(document).ready(function(){
         $("#lookupApplicantModal").modal("show");
     });
     
+    $("#replacable").on("click", "#applicantListingTable tr", function(event){
+        //populate modal text fields here, then show it
+        $.ajax({
+            url : BASE_URL + "/applicant/getthis",
+            type : "POST",
+            //headers : {"Api-Key": "1234"},
+            data : {"applicantId" : $(this).attr("id")},
+            success : function(data){
+                //console.log(data);
+                $("#replacable").empty();
+                $("#replacable").html(data);
+                /*data = JSON.parse(data);
+                if(data.status == "success"){
+                    //console.log(data);
+                    $("#editApplicantModal #name").val(data.data.name);
+                    $("#editDealModal #shortDesc").val(data.data.shortDesc);
+                    $("#editDealModal #longDesc").val(data.data.longDesc);
+                    $("#editDealModal #pseudoViews").val(data.data.pseudoViews);
+                    $("#editDealModal #region").val(data.data.region);
+                    
+                    var now = new Date(data.data.expiresOn.date.substring(0,data.data.expiresOn.date.indexOf(' ')));
+                    var day = ("0" + now.getDate()).slice(-2);
+                    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                    var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+                    $("#editDealModal #expiresOn").val(today);
+                    $("#editDealModal").modal('show');
+                }*/
+            },
+           
+            error : function(XMLHttpRequest, textStatus, errorThrown){ 
+                console.log("Status: " + textStatus + ", Error: " + errorThrown); 
+            }  
+        });
+        $("#editApplicantModal").modal("show");
+    });
+    
     $("#replacable").on("keyup", "#lookupApplicant", function(event){
         if((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 8 || event.keyCode == 46)
         {
