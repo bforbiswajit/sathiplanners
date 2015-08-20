@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-1">
                                     <div class="box-body">
-                                        <form id="forgot_form" action="index.php/login/forget" style="padding:0px">
+                                        <form id="forgot_form" action="/login/forget" style="padding:0px">
                                             <div style="padding:20px;font-size:1em;text-align:center;width:100%"><p>Enter Your Email Address</p></div>
                                             <li>
                                                 <input type="text" class="text" style="width:100%" name="email" placeholder="example@example.com">

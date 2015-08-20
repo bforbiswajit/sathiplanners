@@ -15,10 +15,12 @@ class Applicant_model extends CI_Model {
     }
     
     public function CreateApplicant($name, $businessTitle, $mobile, $email, $addressLine, $city, $district, $state, $pin, $dob, $ma, $notes){
-        $thisUser = $this->em->getRepository('Entities\Applicant')->findBy(array('mobile' => $mobile));
-        if(is_array($thisUser) && !empty($thisUser))
+        $thisUser = $this->em->getRepository('Entities\Applicant')->findOneBy(array('mobile' => $mobile));
+        if($thisUser != FALSE)
         {
-            return array("status" => "error", "message" => array("Title" => "Sorry, mobile number already exists.", "Code" => "400"));
+            $data = $this->session->userdata();
+            $data['err_msg_applicant'] = "Sorry, mobile number already exists. Error Code #400.";
+            $data['success_msg_applicant'] = "";
         }
         
         $applicant = new Entities\Applicant;
@@ -42,14 +44,17 @@ class Applicant_model extends CI_Model {
             $this->em->persist($applicant);
             $this->em->flush();
             
-            $data['err_msg'] = "";
-            $data['success_msg'] = "New Applicant Added Successfully.";
+            $data = $this->session->userdata();
+            $data['err_msg_applicant'] = "";
+            $data['success_msg_applicant'] = "New Applicant Added Successfully.";
             $this->session->set_userdata($data);
             return TRUE;
         }
         catch(Exception $exc)
         {
-            $data['err_msg'] = "Sorry, failed to add applicant, Please try again later. Error Code: #503.";
+            $data = $this->session->userdata();
+            $data['success_msg_applicant'] = "";
+            $data['err_msg_applicant'] = "Sorry, failed to add applicant, Please try again later. Error Code: #503.";
             $this->session->set_userdata($data);
             return FALSE;
             //return array("status" => "error", "message" => array("Title" => $exc->getTraceAsString(), "Code" => "503"));

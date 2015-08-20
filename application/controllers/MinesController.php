@@ -35,6 +35,12 @@ class MinesController extends CI_Controller
                 exit;
             }
             
+            if(preg_match("/[a-zA-Z]{1,20}/", $leasType = isset($_POST['leasType']) ? trim($_POST['leasType']) : "") == 0)
+            {
+                echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid Leas Type.", "Code" => "400")));
+                exit;
+            }
+            
             if(preg_match("/[a-zA-Z]{1,20}/", $district = isset($_POST['district']) ? trim($_POST['district']) : "") == 0)
             {
                 echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid District Name.", "Code" => "400")));
@@ -59,7 +65,8 @@ class MinesController extends CI_Controller
             }
             
             $this->load->model('Mines_model');
-            echo json_encode($this->Mines_model->CreateMines($area, $district, $mouza, $notes, $fileNo));
+            $this->Mines_model->CreateMines($area,$leasType, $district, $mouza, $notes, $fileNo);
+            $this->load->view('add_mine');
         /*}
         else
             echo json_encode(array("status" => "error", "message" => array("Title" => "Authentication Failure.", "Code" => "401")));*/

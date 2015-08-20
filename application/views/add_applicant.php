@@ -7,19 +7,19 @@
     </div><!-- /.box-header -->
     <div class="box-body">
         <?php
-            if($this->session->userdata('err_msg')){
-        ?>
-            <div class="alert alert-success alert-dismissable" role="alert" id="applicantAddForm_success">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <?php echo $this->session->userdata('err_msg');?>
-            </div>
-        <?php
-            }
-            elseif($this->session->userdata('success_msg')){
+            if($this->session->userdata('err_msg_applicant')){
         ?>
             <div class="alert alert-success alert-dismissable" role="alert" id="applicantAddForm_danger">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <?php echo $this->session->userdata('success_msg');?>
+                <?php echo $this->session->userdata('err_msg_applicant');?>
+            </div>
+        <?php
+            }
+            elseif($this->session->userdata('success_msg_applicant')){
+        ?>
+            <div class="alert alert-success alert-dismissable" role="alert" id="applicantAddForm_success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <?php echo $this->session->userdata('success_msg_applicant');?>
             </div>
         <?php
             }
@@ -27,7 +27,7 @@
         <form id="applicantAddForm" method="post" action="/applicant/add" enctype="multipart/form-data">
             <div class="modal-body" style="width: 50%; margin-left: 10%;">
                 <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">Name</span>
+                    <span class="input-group-addon" id="basic-addon1">Name&nbsp;<font color="red">*</font></span>
                     <input type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" name="name" required>
                 </div><br/>
                 <div class="input-group">
@@ -35,30 +35,30 @@
                     <input type="text" class="form-control" placeholder="Company Name (Optional)" aria-describedby="basic-addon1" name="businessTitle">
                 </div><br/>
                 <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">Mobile</span>
+                    <span class="input-group-addon" id="basic-addon1">Mobile&nbsp;<font color="red">*</font></span>
                     <input type="text" class="form-control" placeholder="10 Digit Mobile No." aria-describedby="basic-addon1" name="mobile" id="mobile" required>
                 </div><br/>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">Email</span>
-                    <input type="text" class="form-control" placeholder="Email Address (Optional)." aria-describedby="basic-addon1" name="email" id="email" required>
+                    <input type="text" class="form-control" placeholder="Email Address (Optional)." aria-describedby="basic-addon1" name="email" id="email">
                 </div><br/>
                 <div class="input-group">
-                    Address <br/><textarea name="addressLine" rows="5" cols="80" required></textarea>
+                    Address&nbsp;<font color="red">*</font><br/><textarea name="addressLine" rows="5" cols="80" required></textarea>
                 </div><br/>
                 <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">City</span>
+                    <span class="input-group-addon" id="basic-addon1">City&nbsp;<font color="red">*</font></span>
                     <input type="text" class="form-control" placeholder="City/Town/Police Station." aria-describedby="basic-addon1" name="city" required>
                 </div><br/>
                 <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">District</span>
+                    <span class="input-group-addon" id="basic-addon1">District&nbsp;<font color="red">*</font></span>
                     <input type="text" class="form-control" placeholder="District." aria-describedby="basic-addon1" name="district" required>
                 </div><br/>
                 <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">State</span>
+                    <span class="input-group-addon" id="basic-addon1">State&nbsp;<font color="red">*</font></span>
                     <input type="text" class="form-control" placeholder="State." aria-describedby="basic-addon1" name="state" required>
                 </div><br/>
                 <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">P.I.N.</span>
+                    <span class="input-group-addon" id="basic-addon1">P.I.N.&nbsp;<font color="red">*</font></span>
                     <input type="text" class="form-control" placeholder="6 Digit P.I.N." aria-describedby="basic-addon1" name="PIN" required>
                 </div><br/>
                 <div class="input-group">

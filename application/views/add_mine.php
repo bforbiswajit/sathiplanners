@@ -6,31 +6,49 @@
 			</div><!-- /.box-tools -->
 		</div><!-- /.box-header -->
 		<div class="box-body">
-			<div class="alert alert-success alert-dismissable" role="alert" id="planAddForm_success" style="display: none;"></div>
-			<div class="alert alert-success alert-dismissable" role="alert" id="planAddForm_danger" style="display: none;"></div>
-			<form id="planAddForm" action="mines/add" enctype="multipart/form-data">
+			<?php
+                            if($this->session->userdata('err_msg_mine')){
+                        ?>
+                            <div class="alert alert-success alert-dismissable" role="alert" id="mineAddForm_danger">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <?php echo $this->session->userdata('err_msg_mine');?>
+                            </div>
+                        <?php
+                            }
+                            elseif($this->session->userdata('success_msg_mine')){
+                        ?>
+                            <div class="alert alert-success alert-dismissable" role="alert" id="mineAddForm_success">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <?php echo $this->session->userdata('success_msg_mine');?>
+                            </div>
+                        <?php
+                            }
+                        ?>
+			<form id="mineAddForm" action="/mines/add" enctype="multipart/form-data">
 				<div class="modal-body" style="width: 50%; margin-left: 10%;">
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Type of Assignment</span>
-						<select name="vendorId" id="vendorList" style="height: 2em; width: 100%;" required>
-							<option value="">-Select-</option>
-							<option value="MP"><a>Only Mining Plan</a></option>
-							<option value="EC"><a>Only Environment Clearance</a></option>
-							<option value="MPEC"><a>Both Mining Plan & EC</a></option>
-						</select>
+                                            <span class="input-group-addon" id="basic-addon1">File No.&nbsp;<font color="red">*</font></span>
+						<input type="text" class="form-control" placeholder="Enter File Number." aria-describedby="basic-addon1" name="fileNo" required>
 					</div><br/>
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Registered On</span>
-						<input type="date" class="form-control" aria-describedby="basic-addon1" name="dateOfRegistration" required>
+						<span class="input-group-addon" id="basic-addon1">Lease Type&nbsp;<font color="red">*</font></span>
+						<input type="text" class="form-control" placeholder="Type of Lease Agreement." aria-describedby="basic-addon1" name="leasType" required>
 					</div><br/>
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">RQP</span>
-						<input type="text" class="form-control" placeholder="Name of RQP To Be Assigned To." aria-describedby="basic-addon1" name="rqp">
+						<span class="input-group-addon" id="basic-addon1">Area&nbsp;<font color="red">*</font></span>
+						<input type="text" class="form-control" placeholder="Enter the Lease Area (Acres)." aria-describedby="basic-addon1" name="area" required>
 					</div><br/>
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Amount &#8377;</span>
-						<input type="text" class="form-control" placeholder="Total Amount To Be Charged." aria-describedby="basic-addon1" name="mobile" id="mobile" required>
+						<span class="input-group-addon" id="basic-addon1">District&nbsp;<font color="red">*</font></span>
+						<input type="text" class="form-control" placeholder="Enter District Name." aria-describedby="basic-addon1" name="district" id="mobile" required>
 					</div><br/>
+					<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">Mouza&nbsp;<font color="red">*</font></span>
+						<input type="text" class="form-control" placeholder="Mouza under which Mines area lies." aria-describedby="basic-addon1" name="mouza" id="mobile" required>
+					</div><br/>
+                                        <div class="input-group">
+                                            Notes/Remarks <br/><textarea name="notes" rows="5" cols="80"></textarea>
+                                        </div><br/>
 					<div class="modal-footer">
 						<button type="reset" class="btn btn-default">Cancel</button>
 						<button type="submit" class="btn btn-primary">Save</button>
