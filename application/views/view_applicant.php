@@ -96,7 +96,7 @@
                                     Notes/Remarks <br/><textarea name="notes" id="notes" rows="5" cols="80"><?php echo htmlspecialchars($notes, ENT_QUOTES, 'UTF-8') ?></textarea>
                                 </div><br/>
                                 <div class="modal-footer">
-                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                    <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
