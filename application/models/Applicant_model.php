@@ -16,12 +16,13 @@ class Applicant_model extends CI_Model {
     
     public function CreateApplicant($name, $businessTitle, $mobile, $email, $addressLine, $city, $district, $state, $pin, $dob, $ma, $notes){
         $thisUser = $this->em->getRepository('Entities\Applicant')->findOneBy(array('mobile' => $mobile));
-        if($thisUser != FALSE)
+        if($thisUser != NULL)
         {
             $data = $this->session->userdata();
-            $data['err_msg_applicant'] = "Sorry, mobile number already exists. Error Code #400.";
+            $data['err_msg_applicant'] = "Sorry, mobile number already exists. Probably duplicate entry, please recheck. Error Code #400.";
             $data['success_msg_applicant'] = "";
             $this->session->set_userdata($data);
+            redirect('applicant');
         }
         
         $applicant = new Entities\Applicant;

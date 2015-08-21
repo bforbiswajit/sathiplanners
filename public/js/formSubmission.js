@@ -115,6 +115,7 @@ $(document).ready(function(){
                 //console.log("loaded");
                 $("#replacable").empty();
                 $("#replacable").html(data);
+                $("html, body").animate({ scrollTop: 0 }, "slow");
             },
             error : function(XMLHttpRequest, textStatus, errorThrown){ 
                 console.log("Status: " + textStatus + ", Error: " + errorThrown); 
