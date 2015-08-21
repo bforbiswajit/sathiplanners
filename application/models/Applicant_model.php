@@ -21,6 +21,7 @@ class Applicant_model extends CI_Model {
             $data = $this->session->userdata();
             $data['err_msg_applicant'] = "Sorry, mobile number already exists. Error Code #400.";
             $data['success_msg_applicant'] = "";
+            $this->session->set_userdata($data);
         }
         
         $applicant = new Entities\Applicant;
@@ -85,8 +86,18 @@ class Applicant_model extends CI_Model {
         $applicant['district'] = $thisApplicant->getDistrict();
         $applicant['state'] = $thisApplicant->getState();
         $applicant['pin'] = $thisApplicant->getPin();
-        $applicant['dob'] = $thisApplicant->getDob();
-        $applicant['ma'] = $thisApplicant->getMa();
+        if($thisApplicant->getDob() != NULL){
+            $tmp = explode(" ", $thisApplicant->getDob()->format("Y-m-d"));
+            $applicant['dob'] = $tmp[0];
+        }
+        else
+            $applicant['dob'] = "";
+        if($thisApplicant->getMa() != NULL){
+            $tmp = explode(" ", $thisApplicant->getMa()->format("Y-m-d"));
+            $applicant['ma'] = $tmp[0];
+        }
+        else
+            $applicant['ma'] = "";
         $applicant['registeredOn'] = $thisApplicant->getRegisteredon();
         $applicant['notes'] = $thisApplicant->getNotes();
         

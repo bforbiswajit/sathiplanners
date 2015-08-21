@@ -25,6 +25,7 @@ $(document).ready(function(){
                 $("#replacable").empty();
                 $("#replacable").html(data);
                 $("#editApplicantModal").modal("show");
+                $("#editApplicantModal").on("hidden.bs.modal", function(event){customAjax("applicant/getall");});
                 /*data = JSON.parse(data);
                 if(data.status == "success"){
                     //console.log(data);

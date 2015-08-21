@@ -16,7 +16,7 @@
                         }
                         elseif(isset($status) && $status == "error"){
                     ?>
-                            <div class="alert alert-success alert-dismissable" role="alert" id="planAddForm_danger">
+                            <div class="alert alert-danger alert-dismissable" role="alert" id="planAddForm_danger">
                                 <?php echo $message;?>
                             </div>
                     <?php
@@ -92,3 +92,9 @@
                         </div>
                     </div>
                 </div>
+<?php
+$data = $this->session->userdata();
+$data['err_msg_applicant'] = "";
+$data['success_msg_applicant'] = "";
+$this->session->set_userdata($data);
+?>

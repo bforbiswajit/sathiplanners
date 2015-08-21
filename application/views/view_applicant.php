@@ -37,7 +37,7 @@
         </div>
 
         
-
+<?php if(isset($name)){?>
         <!--Edit Deal Modal-->
         <div class="modal fade" id="editApplicantModal">
             <div class="modal-dialog">
@@ -55,51 +55,54 @@
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Business Title</span>
-                                    <input type="text" class="form-control" placeholder="Company Name (Optional)" aria-describedby="basic-addon1" name="businessTitle" id="businessTitle">
+                                    <input type="text" class="form-control" placeholder="Company Name (Optional)" aria-describedby="basic-addon1" name="businessTitle" id="businessTitle" value="<?php echo $businessTitle;?>">
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Mobile&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="10 Digit Mobile No." aria-describedby="basic-addon1" name="mobile" id="mobile" required>
+                                    <input type="text" class="form-control" placeholder="10 Digit Mobile No." aria-describedby="basic-addon1" name="mobile" id="mobile" value="<?php echo $mobile;?>" required>
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Email</span>
-                                    <input type="text" class="form-control" placeholder="Email Address (Optional)." aria-describedby="basic-addon1" name="email" id="email">
+                                    <input type="text" class="form-control" placeholder="Email Address (Optional)." aria-describedby="basic-addon1" name="email" id="email" value="<?php echo $email;?>">
                                 </div><br/>
                                 <div class="input-group">
-                                    Address&nbsp;<font color="red">*</font><br/><textarea name="addressLine" id="addressLine" rows="5" cols="80" required></textarea>
+                                    Address&nbsp;<font color="red">*</font><br/><textarea name="addressLine" id="addressLine" rows="5" cols="80" required><?php echo htmlspecialchars($addressLine, ENT_QUOTES, 'UTF-8') ?></textarea>
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">City&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="City/Town/Police Station." aria-describedby="basic-addon1" name="city" id="city" required>
+                                    <input type="text" class="form-control" placeholder="City/Town/Police Station." aria-describedby="basic-addon1" name="city" id="city" value="<?php echo $city;?>" required>
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">District&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="District." aria-describedby="basic-addon1" name="district" id="district" required>
+                                    <input type="text" class="form-control" placeholder="District." aria-describedby="basic-addon1" name="district" id="district" value="<?php echo $district;?>" required>
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">State&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="State." aria-describedby="basic-addon1" name="state" id="state" required>
+                                    <input type="text" class="form-control" placeholder="State." aria-describedby="basic-addon1" name="state" id="state" value="<?php echo $state;?>" required>
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">P.I.N.&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="6 Digit P.I.N." aria-describedby="basic-addon1" name="PIN" id="PIN" required>
+                                    <input type="text" class="form-control" placeholder="6 Digit P.I.N." aria-describedby="basic-addon1" name="PIN" id="PIN" value="<?php echo $pin;?>" required>
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Date of Birth</span>
-                                    <input type="date" class="form-control" aria-describedby="basic-addon1" name="dob" id="dob">
+                                    <input type="date" class="form-control" aria-describedby="basic-addon1" name="dob" id="dob" value="<?php if($dob != "")echo date('Y-m-d',strtotime($dob));?>">
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Marriage Anniversary</span>
-                                    <input type="date" class="form-control" aria-describedby="basic-addon1" name="ma" id"ma">
+                                    <input type="date" class="form-control" aria-describedby="basic-addon1" name="ma" id="ma" value="<?php if($ma != "")echo date('Y-m-d',strtotime($ma));?>">
                                 </div><br/>
                                 <div class="input-group">
-                                    Notes/Remarks <br/><textarea name="notes" id="notes" rows="5" cols="80"></textarea>
+                                    Notes/Remarks <br/><textarea name="notes" id="notes" rows="5" cols="80"><?php echo htmlspecialchars($notes, ENT_QUOTES, 'UTF-8') ?></textarea>
                                 </div><br/>
                                 <div class="modal-footer">
                                     <button type="reset" class="btn btn-default">Cancel</button>
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+<?php
+}
+?>

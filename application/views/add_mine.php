@@ -9,7 +9,7 @@
 			<?php
                             if($this->session->userdata('err_msg_mine')){
                         ?>
-                            <div class="alert alert-success alert-dismissable" role="alert" id="mineAddForm_danger">
+                            <div class="alert alert-danger alert-dismissable" role="alert" id="mineAddForm_danger">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 <?php echo $this->session->userdata('err_msg_mine');?>
                             </div>

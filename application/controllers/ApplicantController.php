@@ -28,9 +28,10 @@ class ApplicantController extends CI_Controller
             if(preg_match("/^\w[a-zA-Z\s\.]{1,35}/", $name = isset($_POST['name']) ? trim($_POST['name']) : "") == 0)
             {
                 $data = $this->session->userdata();
-                $data['err_msg_applicant'] = "Invalid Name. Error Code #400.";
+                $data['err_msg_applicant'] = "Invalid Name. Max 35 Characters, No Special Character Allowed. Error Code #400.";
                 $data['success_msg_applicant'] = "";
                 $this->session->set_userdata($data);
+                redirect('applicant');
                 /*echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid Name.", "Code" => "400")));
                 exit;*/
             }
@@ -43,8 +44,10 @@ class ApplicantController extends CI_Controller
             if(preg_match("/[0-9]{10}/", $mobile = isset($_POST['mobile']) ? trim($_POST['mobile']) : "") == 0)
             {
                 $data = $this->session->userdata();
-                $data['err_msg_applicant'] = "Invalid Mobile No. Error Code #400.";
+                $data['err_msg_applicant'] = "Invalid Mobile No (Insert Only 10 Digits). Error Code #400.";
                 $data['success_msg_applicant'] = "";
+                $this->session->set_userdata($data);
+                redirect('applicant');
             }
 
             if(preg_match("/^[a-z][a-z0-9\.\_]*@[a-z][a-z0-9\.]+[a-z]$/", $email = isset($_POST['email']) ? trim($_POST['email']) : "") == 0)
@@ -52,32 +55,39 @@ class ApplicantController extends CI_Controller
                 $email = "";
             }
             
-            if(preg_match("/[a-zA-Z\s\.\/\\\-]{1,160}/", $addressLine = isset($_POST['addressLine']) ? trim($_POST['addressLine']) : "") == 0)
+            if(preg_match("/[a-zA-Z\s\:\.\/\\\-]{1,160}/", $addressLine = isset($_POST['addressLine']) ? trim($_POST['addressLine']) : "") == 0)
             {
                 $data = $this->session->userdata();
-                $data['err_msg_applicant'] = "Invalid Address. Error Code #400.";
+                $data['err_msg_applicant'] = "Invalid Address.  Max 160 Characters. Error Code #400.";
                 $data['success_msg_applicant'] = "";
+                $this->session->set_userdata($data);
+                redirect('applicant');
             }
             
             if(preg_match("/[a-zA-Z\s\.]{1,20}/", $city = isset($_POST['city']) ? trim($_POST['city']) : "") == 0)
             {
                 $data = $this->session->userdata();
-                $data['err_msg_applicant'] = "Invalid City. Error Code #400.";
+                $data['err_msg_applicant'] = "Invalid City. Max 20 Characters, No Special Character/Digit Allowed. Error Code #400.";
                 $data['success_msg_applicant'] = "";
+                redirect('applicant');
             }
             
             if(preg_match("/[a-zA-Z\s\.]{1,20}/", $district = isset($_POST['district']) ? trim($_POST['district']) : "") == 0)
             {
                 $data = $this->session->userdata();
-                $data['err_msg_applicant'] = "Invalid District. Error Code #400.";
+                $data['err_msg_applicant'] = "Invalid District. Max 20 Characters, No Special Character/Digit Allowed. Error Code #400.";
                 $data['success_msg_applicant'] = "";
+                $this->session->set_userdata($data);
+                redirect('applicant');
             }
             
             if(preg_match("/[a-zA-Z\s\.]{1,20}/", $state = isset($_POST['state']) ? trim($_POST['state']) : "") == 0)
             {
                 $data = $this->session->userdata();
-                $data['err_msg_applicant'] = "Invalid State. Error Code #400.";
+                $data['err_msg_applicant'] = "Invalid State. Max 20 Characters, No Special Character/Digit Allowed. Error Code #400.";
                 $data['success_msg_applicant'] = "";
+                $this->session->set_userdata($data);
+                redirect('applicant');
             }
 
             if(preg_match("/[0-9]{6}/", $pin = isset($_POST['PIN']) ? trim($_POST['PIN']) : "") == 0)
@@ -85,6 +95,8 @@ class ApplicantController extends CI_Controller
                 $data = $this->session->userdata();
                 $data['err_msg_applicant'] = "Invalid P.I.N. Error Code #400.";
                 $data['success_msg_applicant'] = "";
+                $this->session->set_userdata($data);
+                redirect('applicant');
             }
             
             if(preg_match("/\d\d\/\d\d\/\d\d\d\d/", $dob = isset($_POST['dob']) ? trim($_POST['dob']) : "") == 0)
