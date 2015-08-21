@@ -74,21 +74,21 @@ class Applicant_model extends CI_Model {
     public function ReadApplicant($applicantId){
         $thisApplicant = $this->doctrine->em->getRepository('Entities\Applicant')->find($applicantId);
         
-        $applicant = new stdClass();
-        $applicant->id = $thisApplicant->getId();
-        $applicant->name = $thisApplicant->getName();
-        $applicant->businessTitle = $thisApplicant->getBusinesstitle();
-        $applicant->mobile = $thisApplicant->getMobile();
-        $applicant->email = $thisApplicant->getEmail();
-        $applicant->addressLine = $thisApplicant->getAddressline();
-        $applicant->city = $thisApplicant->getCity();
-        $applicant->district = $thisApplicant->getDistrict();
-        $applicant->state = $thisApplicant->getState();
-        $applicant->pin = $thisApplicant->getPin();
-        $applicant->dob = $thisApplicant->getDob();
-        $applicant->ma = $thisApplicant->getMa();
-        $applicant->registeredOn = $thisApplicant->getRegisteredon();
-        $applicant->notes = $thisApplicant->getNotes();
+        $applicant = array();
+        $applicant['id'] = $thisApplicant->getId();
+        $applicant['name'] = $thisApplicant->getName();
+        $applicant['businessTitle'] = $thisApplicant->getBusinesstitle();
+        $applicant['mobile'] = $thisApplicant->getMobile();
+        $applicant['email'] = $thisApplicant->getEmail();
+        $applicant['addressLine'] = $thisApplicant->getAddressline();
+        $applicant['city'] = $thisApplicant->getCity();
+        $applicant['district'] = $thisApplicant->getDistrict();
+        $applicant['state'] = $thisApplicant->getState();
+        $applicant['pin'] = $thisApplicant->getPin();
+        $applicant['dob'] = $thisApplicant->getDob();
+        $applicant['ma'] = $thisApplicant->getMa();
+        $applicant['registeredOn'] = $thisApplicant->getRegisteredon();
+        $applicant['notes'] = $thisApplicant->getNotes();
         
         return $applicant;
     }

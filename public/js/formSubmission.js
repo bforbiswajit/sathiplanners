@@ -24,6 +24,7 @@ $(document).ready(function(){
                 //console.log(data);
                 $("#replacable").empty();
                 $("#replacable").html(data);
+                $("#editApplicantModal").modal("show");
                 /*data = JSON.parse(data);
                 if(data.status == "success"){
                     //console.log(data);

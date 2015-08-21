@@ -51,7 +51,7 @@
                             <form id="applicantEditForm" action="/applicant/Edit" enctype="multipart/form-data">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Name&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" name="name" id="name" value="<?php var_dump($applicant)?>" required>
+                                    <input type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" name="name" id="name" value="<?php echo $name;?>" required>
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Business Title</span>
