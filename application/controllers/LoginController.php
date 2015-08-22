@@ -49,7 +49,8 @@ class LoginController extends CI_Controller
     
     public function Logout(){
         $this->session->sess_destroy();
-        redirect('login');
+        //redirect('login');
+        header('location: /sathiplanners');
     }
     
     public function CheckSession(){

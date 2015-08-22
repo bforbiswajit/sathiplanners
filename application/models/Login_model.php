@@ -34,6 +34,7 @@ class Login_model extends CI_Model {
             $data['lastLogin'] = $user->getLastlogin();
             
             $this->session->set_userdata($data);
+            $this->db->update('user',array("lastLogin" => date('Y-m-d H:i:s')), array("id" => $user->getId()));
             return TRUE;
         }
     }

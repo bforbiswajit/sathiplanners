@@ -89,15 +89,15 @@
                   <!-- The user image in the navbar-->
                   <img src="<?php echo base_url('public/dist/img/SP_Logo_small.png'); ?>" class="user-image" alt="User Image"/>
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  <span class="hidden-xs" id="user_logged_in">Biswajit Bardhan</span>
+                  <span class="hidden-xs" id="user_logged_in"><?php echo $this->session->userdata('name');?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
                   <li class="user-header">
                     <img id="user_logged_in_img" src="<?php echo base_url('public/dist/img/SP_Logo_small.png'); ?>" class="img-circle" alt="User Image" />
                     <p>
-                      Biswajit Bardhan - Web Developer
-                      <small>Member since Nov. 2012</small>
+                      <?php echo $this->session->userdata('type');?>
+                      <small>Last Login : <?php echo date('Y-m-d H:i:s',strtotime($this->session->userdata('lastLogin')->format('Y-m-d H:i:s')));?></small>
                     </p>
                   </li>
                   <!-- Menu Body -->
