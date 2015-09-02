@@ -16,7 +16,7 @@ class Mines_model extends CI_Model {
         //$this->load->helper('utilities');
     }
     
-    public function CreateMines($area, $leasType, $district, $mouza, $notes, $fileNo){
+    public function CreateMines($area, $leasType, $district, $mouza, $notes, $fileNo, $coOrdinate){
         //$planId = fileNoToPlanId($fileNo);
         $plan = $this->em->getRepository('Entities\Plan')->findOneBy(array("fileno" => strtoupper($fileNo)));
         if($plan == FALSE){
@@ -34,6 +34,7 @@ class Mines_model extends CI_Model {
         $mines->setMouza($mouza);
         $mines->setNotes($notes);
         $mines->setPlanid($plan);
+        $mines->setLatlng($coOrdinate);
         try
         {
             $this->em->persist($mines);

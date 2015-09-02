@@ -35,7 +35,7 @@ class PlanController extends CI_Controller
                 $this->load->view('create_plan', $response);
             }
 
-            if(preg_match("/[0-9]{1,3}/", $applicantId = isset($_POST['applicantId']) ? trim($_POST['applicantId']) : "") == 0)
+            if(preg_match("/[0-9]{1,3}/", $applicantId = isset($_POST['applicantId']) ? intval(trim($_POST['applicantId'])) : "") == 0)
             {
                 $response['err_msg'] = "Invalid Applicant. Error Code: #400.";
                 $this->load->view('create_plan', $response);

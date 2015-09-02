@@ -48,10 +48,11 @@
                     </div>
                     <div class="modal-body">
                         <div class="box-body">
-                            <form id="applicantEditForm" action="/applicant/Edit" enctype="multipart/form-data">
+                            <form id="applicantEditForm" action="/applicant/edit" enctype="multipart/form-data">
+                                <input type="hidden" id="applicantId" name="applicantId" value="<?php echo $id;?>">
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Name&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" name="name" id="name" value="<?php echo $name;?>" required>
+                                    <input type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" name="name" id="name" value="<?php echo $name;?>">
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Business Title</span>
@@ -59,30 +60,30 @@
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Mobile&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="10 Digit Mobile No." aria-describedby="basic-addon1" name="mobile" id="mobile" value="<?php echo $mobile;?>" required>
+                                    <input type="text" class="form-control" placeholder="10 Digit Mobile No." aria-describedby="basic-addon1" name="mobile" id="mobile" value="<?php echo $mobile;?>">
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Email</span>
                                     <input type="text" class="form-control" placeholder="Email Address (Optional)." aria-describedby="basic-addon1" name="email" id="email" value="<?php echo $email;?>">
                                 </div><br/>
                                 <div class="input-group">
-                                    Address&nbsp;<font color="red">*</font><br/><textarea name="addressLine" id="addressLine" rows="5" cols="80" required><?php echo htmlspecialchars($addressLine, ENT_QUOTES, 'UTF-8') ?></textarea>
+                                    Address&nbsp;<font color="red">*</font><br/><textarea name="addressLine" id="addressLine" rows="5" cols="80"><?php echo htmlspecialchars($addressLine, ENT_QUOTES, 'UTF-8') ?></textarea>
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">City&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="City/Town/Police Station." aria-describedby="basic-addon1" name="city" id="city" value="<?php echo $city;?>" required>
+                                    <input type="text" class="form-control" placeholder="City/Town/Police Station." aria-describedby="basic-addon1" name="city" id="city" value="<?php echo $city;?>">
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">District&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="District." aria-describedby="basic-addon1" name="district" id="district" value="<?php echo $district;?>" required>
+                                    <input type="text" class="form-control" placeholder="District." aria-describedby="basic-addon1" name="district" id="district" value="<?php echo $district;?>">
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">State&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="State." aria-describedby="basic-addon1" name="state" id="state" value="<?php echo $state;?>" required>
+                                    <input type="text" class="form-control" placeholder="State." aria-describedby="basic-addon1" name="state" id="state" value="<?php echo $state;?>">
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">P.I.N.&nbsp;<font color="red">*</font></span>
-                                    <input type="text" class="form-control" placeholder="6 Digit P.I.N." aria-describedby="basic-addon1" name="PIN" id="PIN" value="<?php echo $pin;?>" required>
+                                    <input type="text" class="form-control" placeholder="6 Digit P.I.N." aria-describedby="basic-addon1" name="PIN" id="PIN" value="<?php echo $pin;?>">
                                 </div><br/>
                                 <div class="input-group">
                                     <span class="input-group-addon" id="basic-addon1">Date of Birth</span>

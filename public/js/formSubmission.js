@@ -25,23 +25,8 @@ $(document).ready(function(){
                 $("#replacable").empty();
                 $("#replacable").html(data);
                 $("#editApplicantModal").modal("show");
+                //$("#editApplicantModal #applicantId").val($(this).attr("id"));
                 $("#editApplicantModal").on("hidden.bs.modal", function(event){customAjax("applicant/getall");});
-                /*data = JSON.parse(data);
-                if(data.status == "success"){
-                    //console.log(data);
-                    $("#editApplicantModal #name").val(data.data.name);
-                    $("#editDealModal #shortDesc").val(data.data.shortDesc);
-                    $("#editDealModal #longDesc").val(data.data.longDesc);
-                    $("#editDealModal #pseudoViews").val(data.data.pseudoViews);
-                    $("#editDealModal #region").val(data.data.region);
-                    
-                    var now = new Date(data.data.expiresOn.date.substring(0,data.data.expiresOn.date.indexOf(' ')));
-                    var day = ("0" + now.getDate()).slice(-2);
-                    var month = ("0" + (now.getMonth() + 1)).slice(-2);
-                    var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
-                    $("#editDealModal #expiresOn").val(today);
-                    $("#editDealModal").modal('show');
-                }*/
             },
            
             error : function(XMLHttpRequest, textStatus, errorThrown){ 
