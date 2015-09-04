@@ -104,6 +104,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 <?php
 }
+
+$data = $this->session->userdata();
+$data['err_msg_applicant'] = "";
+$data['success_msg_applicant'] = "";
+$this->session->set_userdata($data);
 ?>

@@ -25,7 +25,6 @@ $(document).ready(function(){
                 $("#replacable").empty();
                 $("#replacable").html(data);
                 $("#editApplicantModal").modal("show");
-                //$("#editApplicantModal #applicantId").val($(this).attr("id"));
                 $("#editApplicantModal").on("hidden.bs.modal", function(event){customAjax("applicant/getall");});
             },
            
@@ -33,7 +32,7 @@ $(document).ready(function(){
                 console.log("Status: " + textStatus + ", Error: " + errorThrown); 
             }  
         });
-        $("#editApplicantModal").modal("show");
+        //$("#editApplicantModal").modal("show");
     });
     
     $("#replacable").on("keyup", "#lookupApplicant", function(event){
@@ -82,6 +81,7 @@ $(document).ready(function(){
     
     $(document).on('submit', 'form', function(event){	//GENERIC form submit function
 	event.preventDefault();
+        $("div[class='modal']").modal("dismiss");
         var form_id = "#" + $(this).closest("form").attr("id");
 	var form_data = new FormData(this);
 	//var form_data = $(this).serialize();

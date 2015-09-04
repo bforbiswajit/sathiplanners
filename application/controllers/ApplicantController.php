@@ -131,57 +131,57 @@ class ApplicantController extends CI_Controller
             redirect('applicant');
         }
         
-        if(preg_match("/^\w[a-zA-Z\s\.]{1,35}/", $name = isset($_POST['name']) ? trim($_POST['name']) : "") == 0)
+        if(preg_match("/^\w[a-zA-Z\s\.]{1,35}/", $name = isset($_POST['name']) ? trim($_POST['name']) : "") != 0)
         {
             $updateFields["name"] = $name;
         }
 
-        if(preg_match("/^\w[a-zA-Z0-9\s\.]{1,35}/", $businessTitle = isset($_POST['businessTitle']) ? trim($_POST['businessTitle']) : "") == 0)
+        if(preg_match("/^\w[a-zA-Z0-9\s\.]{1,35}/", $businessTitle = isset($_POST['businessTitle']) ? trim($_POST['businessTitle']) : "") != 0)
         {
             $updateFields["businessTitle"] = $businessTitle;
         }
 
-        if(preg_match("/[0-9]{10}/", $mobile = isset($_POST['mobile']) ? trim($_POST['mobile']) : "") == 0)
+        if(preg_match("/[0-9]{10}/", $mobile = isset($_POST['mobile']) ? trim($_POST['mobile']) : "") != 0)
         {
             $updateFields["mobile"] = $mobile;
         }
 
-        if(preg_match("/^[a-z][a-z0-9\.\_]*@[a-z][a-z0-9\.]+[a-z]$/", $email = isset($_POST['email']) ? trim($_POST['email']) : "") == 0)
+        if(preg_match("/^[a-z][a-z0-9\.\_]*@[a-z][a-z0-9\.]+[a-z]$/", $email = isset($_POST['email']) ? trim($_POST['email']) : "") != 0)
         {
             $updateFields["email"] = $email;
         }
 
-        if(preg_match("/[a-zA-Z\s\:\.\/\\\-]{1,160}/", $addressLine = isset($_POST['addressLine']) ? trim($_POST['addressLine']) : "") == 0)
+        if(preg_match("/[a-zA-Z\s\:\.\/\\\-]{1,160}/", $addressLine = isset($_POST['addressLine']) ? trim($_POST['addressLine']) : "") != 0)
         {
             $updateFields["addressLine"] = $addressLine;
         }
 
-        if(preg_match("/[a-zA-Z\s\.]{1,20}/", $city = isset($_POST['city']) ? trim($_POST['city']) : "") == 0)
+        if(preg_match("/[a-zA-Z\s\.]{1,20}/", $city = isset($_POST['city']) ? trim($_POST['city']) : "") != 0)
         {
             $updateFields["city"] = $city;
         }
 
-        if(preg_match("/[a-zA-Z\s\.]{1,20}/", $district = isset($_POST['district']) ? trim($_POST['district']) : "") == 0)
+        if(preg_match("/[a-zA-Z\s\.]{1,20}/", $district = isset($_POST['district']) ? trim($_POST['district']) : "") != 0)
         {
             $updateFields["district"] = $district;
         }
 
-        if(preg_match("/[a-zA-Z\s\.]{1,20}/", $state = isset($_POST['state']) ? trim($_POST['state']) : "") == 0)
+        if(preg_match("/[a-zA-Z\s\.]{1,20}/", $state = isset($_POST['state']) ? trim($_POST['state']) : "") != 0)
         {
             $updateFields["state"] = $state;
         }
 
-        if(preg_match("/[0-9]{6}/", $pin = isset($_POST['PIN']) ? trim($_POST['PIN']) : "") == 0)
+        if(preg_match("/[0-9]{6}/", $pin = isset($_POST['PIN']) ? trim($_POST['PIN']) : "") != 0)
         {
             $updateFields["pin"] = $pin;
         }
 
-        if(preg_match("/\d\d\/\d\d\/\d\d\d\d/", $dob = isset($_POST['dob']) ? trim($_POST['dob']) : "") == 0)
+        if(preg_match("/\d\d\/\d\d\/\d\d\d\d/", $dob = isset($_POST['dob']) ? trim($_POST['dob']) : "") != 0)
         {
             $updateFields["dob"] = $dob;
         }
 
-        if(preg_match("/\d\d\/\d\d\/\d\d\d\d/", $ma = isset($_POST['ma']) ? trim($_POST['ma']) : "") == 0)
+        if(preg_match("/\d\d\/\d\d\/\d\d\d\d/", $ma = isset($_POST['ma']) ? trim($_POST['ma']) : "") != 0)
         {
             $updateFields["ma"] = $ma;
         }
@@ -189,10 +189,10 @@ class ApplicantController extends CI_Controller
         if(is_array($updateFields) && count($updateFields) > 0)
         {
             $this->load->model('Applicant_model');
-            echo json_encode($this->Applicant_model->UpdateApplicant($updateFields, $applicantId));
+            $this->Applicant_model->UpdateApplicant($updateFields, $applicantId);
         }
         
-        $this->load->view('add_applicant');
+        redirect('applicant/getall');
     }
     
     public function GetApplicant(){
