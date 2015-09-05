@@ -108,7 +108,8 @@ class Applicant_model extends CI_Model {
     
     public function UpdateApplicant($updateFields, $applicantId){
         $applicant = new Entities\Applicant;
-        if(!$thisApplicant = $this->doctrine->em->getRepository('Entities\Applicant')->findOneBy(array("mobile" => $updateFields['mobile']))){
+        $thisApplicant = $this->doctrine->em->getRepository('Entities\Applicant')->findBy(array("mobile" => $updateFields['mobile']));
+        if($thisApplicant == FALSE || (count($thisApplicant) == 1 && $thisApplicant[0]->getId() == $applicantId)){
             try
             {
                 $this->db->update('applicant', $updateFields, array("id" => $applicantId));
@@ -128,7 +129,7 @@ class Applicant_model extends CI_Model {
             }
         }else{
             $data = $this->session->userdata();
-            $data['err_msg_view_applicant'] = "Sorry, Failed To Update. Mobile no. already available with " . $thisApplicant->getName() . ".";
+            $data['err_msg_view_applicant'] = "Sorry, Failed To Update. Mobile no. already available with " . $thisApplicant[0]->getName() . ".";
             $data['success_msg_view_applicant'] = "";
             $this->session->set_userdata($data);
             return FALSE;
