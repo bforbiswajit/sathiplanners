@@ -108,20 +108,28 @@ class Applicant_model extends CI_Model {
     
     public function UpdateApplicant($updateFields, $applicantId){
         $applicant = new Entities\Applicant;
-        try
-        {
-            $this->db->update('applicant', $updateFields, array("id" => $applicantId));
+        if(!$thisApplicant = $this->doctrine->em->getRepository('Entities\Applicant')->findOneBy(array("mobile" => $updateFields['mobile']))){
+            try
+            {
+                $this->db->update('applicant', $updateFields, array("id" => $applicantId));
+                $data = $this->session->userdata();
+                $data['err_msg_view_applicant'] = "";
+                $data['success_msg_view_applicant'] = "Applicant Details Updated Successfully.";
+                $this->session->set_userdata($data);
+                return TRUE;
+            }
+            catch(Exception $exc)
+            {
+                $data = $this->session->userdata();
+                $data['err_msg_view_applicant'] = "Sorry, Failed To Update Applicant Details. #Error Code 500.";
+                $data['success_msg_view_applicant'] = "";
+                $this->session->set_userdata($data);
+                return FALSE;
+            }
+        }else{
             $data = $this->session->userdata();
-            $data['err_msg_applicant'] = "";
-            $data['success_msg_applicant'] = "Applicant Details Updated Successfully.";
-            $this->session->set_userdata($data);
-            return TRUE;
-        }
-        catch(Exception $exc)
-        {
-            $data = $this->session->userdata();
-            $data['err_msg_applicant'] = "Sorry, Failed To Update Applicant Details.";
-            $data['success_msg_applicant'] = "";
+            $data['err_msg_view_applicant'] = "Sorry, Failed To Update. Mobile no. already available with " . $thisApplicant->getName() . ".";
+            $data['success_msg_view_applicant'] = "";
             $this->session->set_userdata($data);
             return FALSE;
         }

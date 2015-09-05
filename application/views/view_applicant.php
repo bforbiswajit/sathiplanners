@@ -1,4 +1,22 @@
 	<div class="box box-warning">
+            <?php
+                if($this->session->userdata('err_msg_view_applicant')){
+            ?>
+                <div class="alert alert-danger alert-dismissable" role="alert" id="applicantAddForm_danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <?php echo $this->session->userdata('err_msg_view_applicant');?>
+                </div>
+            <?php
+                }
+                elseif($this->session->userdata('success_msg_view_applicant')){
+            ?>
+                <div class="alert alert-success alert-dismissable" role="alert" id="applicantAddForm_success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <?php echo $this->session->userdata('success_msg_view_applicant');?>
+                </div>
+            <?php
+                }
+            ?>
 		<div class="box-header with-border">
 			<h3 class="box-title">List of All Applicants</h3>
 			<div class="box-tools pull-right">
@@ -110,7 +128,7 @@
 }
 
 $data = $this->session->userdata();
-$data['err_msg_applicant'] = "";
-$data['success_msg_applicant'] = "";
+$data['err_msg_view_applicant'] = "";
+$data['success_msg_view_applicant'] = "";
 $this->session->set_userdata($data);
 ?>

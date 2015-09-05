@@ -98,6 +98,7 @@ $(document).ready(function(){
             data : form_data,
             success : function(data){
                 //console.log("loaded");
+                $('.modal-backdrop').fadeOut(400);
                 $("#replacable").empty();
                 $("#replacable").html(data);
                 $("html, body").animate({ scrollTop: 0 }, "slow");
