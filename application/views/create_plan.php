@@ -79,9 +79,9 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>#ID</th>
                                         <th>Name</th>
                                         <th>Business Title</th>
+                                        <th>Mobile</th>
                                         <th>City</th>
                                     </tr>
                                 </thead>

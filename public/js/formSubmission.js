@@ -55,7 +55,7 @@ $(document).ready(function(){
                             $("#lookupApplicantTable").empty();
                             for(var i=0; i<response.data.length; i++)
                             {
-                                $("#lookupApplicantTable").append("<tr id='" + response.data[i].id + "'><td>" + response.data[i].id + "</td><td>" + response.data[i].name + "</td><td>" + response.data[i].businessTitle + "</td><td>" + response.data[i].city + "</td></tr>");
+                                $("#lookupApplicantTable").append("<tr id='" + response.data[i].id + "'><td>" + response.data[i].name + "</td><td>" + response.data[i].businessTitle + "</td><td>" + response.data[i].mobile + "</td><td>" + response.data[i].city + "</td></tr>");
                             }
                         }
                         else{

@@ -27,7 +27,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>#ID</th>
+                                <th>#Sl. No.</th>
                                 <th>Name</th>
                                 <th>Business Title</th>
                                 <th>Mobile</th>
@@ -42,7 +42,7 @@
                                 if(isset($data) && !empty($data)){
                                     for($i = 0; $i < count($data); $i++){
                                         //echo $data[$i]->id . "\n<br/>";
-                                        echo "<tr id='" . $data[$i]->id . "'><td>" . $data[$i]->id . "</td><td>" . $data[$i]->name . "</td><td>" . $data[$i]->businessTitle . "</td><td>" . $data[$i]->mobile . "</td><td>" . $data[$i]->city . "</td><td>" . $data[$i]->district . "</td><td>" . $data[$i]->registeredOn->format('Y-m-d') . "</td><td>-</td></tr>";
+                                        echo "<tr id='" . $data[$i]->id . "'><td>" . ($i + 1) . "</td><td>" . $data[$i]->name . "</td><td>" . $data[$i]->businessTitle . "</td><td>" . $data[$i]->mobile . "</td><td>" . $data[$i]->city . "</td><td>" . $data[$i]->district . "</td><td>" . $data[$i]->registeredOn->format('Y-m-d') . "</td><td>-</td></tr>";
                                     }
                                 }
                                 elseif(isset($message)){

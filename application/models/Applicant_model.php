@@ -66,7 +66,7 @@ class Applicant_model extends CI_Model {
     
     public function ReadPartialApplicant($key){
         $con = $this->em->getConnection();
-        $query = $con->prepare("select id, name, businessTitle, city from applicant where id like '" . $key . "%' or name like '" . $key . "%' or businessTitle like '" . $key . "%' or city like '" . $key . "%'");
+        $query = $con->prepare("select id, name, businessTitle, city, mobile from applicant where id like '" . $key . "%' or name like '" . $key . "%' or businessTitle like '" . $key . "%' or city like '" . $key . "%'");
         $query->execute();
         $data = $query->fetchAll();
         
@@ -136,7 +136,7 @@ class Applicant_model extends CI_Model {
     }
     
     public function applicantListing(){
-        $allApplicants = $this->doctrine->em->getRepository('Entities\Applicant')->findAll();
+        $allApplicants = $this->doctrine->em->getRepository('Entities\Applicant')->findBy(array(), array("name" => "ASC"));
         $data = array();
         for($i = 0; $i < count($allApplicants); $i++){
             $applicant = new stdClass();
