@@ -28,7 +28,7 @@
                     <div class="modal-body" style="width: 50%; margin-left: 10%;">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1">File No.&nbsp;<font color="red">*</font></span>
-                                <input type="text" class="form-control" placeholder="Enter File Number." aria-describedby="basic-addon1" name="fileNo" required>
+                                <input type="text" class="form-control" placeholder="Enter File Number (Ex. SPPL/MPEC/1)." aria-describedby="basic-addon1" name="fileNo" required>
                         </div><br/>
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1">Lease Type&nbsp;<font color="red">*</font></span>

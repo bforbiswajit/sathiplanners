@@ -10,6 +10,7 @@
                         if(isset($status) && $status == "success"){
                     ?>
                             <div class="alert alert-success alert-dismissable" role="alert" id="planAddForm_success">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 <?php echo $data[0];?>
                             </div>
                     <?php
@@ -17,6 +18,7 @@
                         elseif(isset($status) && $status == "error"){
                     ?>
                             <div class="alert alert-danger alert-dismissable" role="alert" id="planAddForm_danger">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 <?php echo $message;?>
                             </div>
                     <?php

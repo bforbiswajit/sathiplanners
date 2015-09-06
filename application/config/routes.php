@@ -80,4 +80,7 @@ $route['mines'] = 'MinesController';
 $route['mines/add'] = 'MinesController/AddNew';
 $route['mines/getall'] = 'MinesController/ReadAll';
 
+$route['document'] = 'DocumentController';
+$route['document/viewstatus'] = 'DocumentController/ViewPendingDocs';
+$route['document/getall'] = 'DocumentController/ReadAll';
 $route['document/attach'] = 'DocumentController/Attach';

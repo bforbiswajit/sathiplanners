@@ -74,7 +74,7 @@ class Applicant_model extends CI_Model {
     }
     
     public function ReadApplicant($applicantId){
-        $thisApplicant = $this->doctrine->em->getRepository('Entities\Applicant')->find($applicantId);
+        $thisApplicant = $this->em->getRepository('Entities\Applicant')->find($applicantId);
         
         $applicant = array();
         $applicant['id'] = $thisApplicant->getId();
@@ -108,7 +108,7 @@ class Applicant_model extends CI_Model {
     
     public function UpdateApplicant($updateFields, $applicantId){
         $applicant = new Entities\Applicant;
-        $thisApplicant = $this->doctrine->em->getRepository('Entities\Applicant')->findBy(array("mobile" => $updateFields['mobile']));
+        $thisApplicant = $this->em->getRepository('Entities\Applicant')->findBy(array("mobile" => $updateFields['mobile']));
         if($thisApplicant == FALSE || (count($thisApplicant) == 1 && $thisApplicant[0]->getId() == $applicantId)){
             try
             {
@@ -137,7 +137,7 @@ class Applicant_model extends CI_Model {
     }
     
     public function applicantListing(){
-        $allApplicants = $this->doctrine->em->getRepository('Entities\Applicant')->findBy(array(), array("name" => "ASC"));
+        $allApplicants = $this->em->getRepository('Entities\Applicant')->findBy(array(), array("name" => "ASC"));
         $data = array();
         for($i = 0; $i < count($allApplicants); $i++){
             $applicant = new stdClass();

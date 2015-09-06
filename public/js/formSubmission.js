@@ -13,6 +13,10 @@ $(document).ready(function(){
         $("#lookupApplicantModal").modal("show");
     });
     
+    $("#replacable").on("click", "#docLookupBtn", function(event){
+        $("#lookupApplicantModal").modal("show");
+    });
+    
     $("#replacable").on("click", "#applicantListingTable tr", function(event){
         //populate modal text fields here, then show it
         $.ajax({

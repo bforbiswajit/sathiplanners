@@ -27,6 +27,7 @@ class Plan_model extends CI_Model {
         
         $plan->setRqp($rqp);
         $plan->setAmount($amount);
+        $plan->setStatus(0);
         
         $con = $this->em->getConnection();
         $query = $con->prepare("select fileNo from plan where type = '$type' order by id desc limit 1");
@@ -72,6 +73,7 @@ class Plan_model extends CI_Model {
             $plan->registeredOn = $allPlans[$i]->getDateofregistration();
             $plan->rqp = $allPlans[$i]->getRqp();
             $plan->amount = $allPlans[$i]->getAmount();
+            $plan->status = $allPlans[$i]->getStatus();
             
             $data[$i] = $plan;
         }

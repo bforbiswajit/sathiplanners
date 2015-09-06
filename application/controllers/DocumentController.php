@@ -9,9 +9,15 @@ defined('BASEPATH') OR exit('Forbidden!');
 
 class DocumentController extends CI_Controller
 {
+    function __construct(){
+        parent::__construct();
+        $this->load->library('session');
+    }
+    
     public function index()
     {
-        echo "Default Controller Action For Document.";
+        //echo "Default Controller Action For Document.";
+        $this->load->view('attach_document');
     }
     
     public function AddNew(){
@@ -19,12 +25,16 @@ class DocumentController extends CI_Controller
         {*/
             if(preg_match("/[a-zA-Z0-9\s\S\-\_\.\,\'\/\\]{1,255}/", $name = isset($_POST['name']) ? trim($_POST['name']) : "") == 0)
             {
-                echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid Document Title.", "Code" => "400")));
-                exit;
+                $data = $this->session->userdata();
+                $data['err_msg_applicant'] = "Invalid Document Title. Error Code #400.";
+                $data['success_msg_applicant'] = "";
+                $this->session->set_userdata($data);
+                redirect('applicant');
             }
 
             $this->load->model('Document_model');
-            echo json_encode($this->Document_model->CreateDocument($name));
+            $this->Document_model->CreateDocument($name);
+            $this->load->view('view_documents');
         /*}
         else
             echo json_encode(array("status" => "error", "message" => array("Title" => "Authentication Failure.", "Code" => "401")));*/
@@ -67,11 +77,18 @@ class DocumentController extends CI_Controller
     public function ViewPendingDocs(){
         if(preg_match("/SPPL\/(MP|EC|MPEC)\/[0-9]{1,3}/", $fileNo = isset($_POST['fileNo']) ? trim($_POST['fileNo']) : "") == 0)
         {
-            echo json_encode(array("status" => "error", "message" => array("Title" => "Invalid File No (Example - SPPL/MPEC/15).", "Code" => "400")));
-            exit;
+            $data = $this->session->userdata();
+            $data['err_msg_applicant'] = "Invalid File No (Example - SPPL/MPEC/15). Error Code #400.";
+            $data['success_msg_applicant'] = "";
+            $this->session->set_userdata($data);
+            redirect('document');
         }
         
+        $this->load->model('Document_model', $this->Document_model->ReadPendingDocument($fileNo));
+    }
+    
+    public function ReadAll(){
         $this->load->model('Document_model');
-        echo json_encode($this->Document_model->ReadPendingDocument($fileNo));
+        $this->load->view('view_documents', $this->Document_model->documentListing());
     }
 }

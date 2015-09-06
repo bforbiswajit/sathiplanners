@@ -69,7 +69,7 @@ class MinesController extends CI_Controller
                 $notes = "";
             }
             
-            if(preg_match("/SPPL\/(MP|EC|MPEC)\/[0-9]{1,3}/", $fileNo = isset($_POST['fileNo']) ? intval(trim($_POST['fileNo'])) : "") == 0)
+            if(preg_match("/SPPL\/(MP|EC|MPEC)\/[0-9]{1,3}/", $fileNo = isset($_POST['fileNo']) ? trim($_POST['fileNo']) : "") == 0)
             {
                 $data['err_msg_mine'] = "Invalid File No (Example - SPPL/MPEC/15). Error Code #400.";
                 $data['success_msg_mine'] = "";
@@ -107,12 +107,12 @@ class MinesController extends CI_Controller
                 $secLng = "";
             }
             
-            if(preg_match("/(N|S)/", $hemiLat = isset($_POST['hemiLat']) ? intval(trim($_POST['hemiLat'])) : "") == 0)
+            if(preg_match("/(N|S)/", $hemiLat = isset($_POST['hemiLat']) ? trim($_POST['hemiLat']) : "") == 0)
             {
                 $hemiLat = "";
             }
             
-            if(preg_match("/(E|W)/", $hemiLng = isset($_POST['hemiLng']) ? intval(trim($_POST['hemiLng'])) : "") == 0)
+            if(preg_match("/(E|W)/", $hemiLng = isset($_POST['hemiLng']) ? trim($_POST['hemiLng']) : "") == 0)
             {
                 $hemiLng = "";
             }
@@ -122,7 +122,6 @@ class MinesController extends CI_Controller
             }
             else
                 $coOrdinate = "";
-            
             $this->load->model('Mines_model');
             $this->Mines_model->CreateMines($area,$leasType, $district, $mouza, $notes, $fileNo, $coOrdinate);
             $this->load->view('add_mine');

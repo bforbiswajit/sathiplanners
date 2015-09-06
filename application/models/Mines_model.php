@@ -20,7 +20,7 @@ class Mines_model extends CI_Model {
         //$planId = fileNoToPlanId($fileNo);
         $plan = $this->em->getRepository('Entities\Plan')->findOneBy(array("fileno" => strtoupper($fileNo)));
         if($plan == FALSE){
-            $data['err_msg_mine'] = "Please insert a valid File No. Error Code #400.";
+            $data['err_msg_mine'] = "No Record Found For File No. $fileNo. Please insert a valid File No. Error Code #400.";
             $this->session->set_userdata($data);
             return FALSE;
             //return array("status" => "error", "message" => array("Title" => "Sorry, File No. Not Found.", "Code" => "503"));

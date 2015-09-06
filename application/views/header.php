@@ -204,8 +204,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a class="navigationAjax" href="documents"><i class="fa fa-paperclip"></i> Attach</a></li>
-                <li><a class="navigationAjax" href="documents/getall"><i class="fa fa-th-list"></i> View</a></li>
+                <li><a class="navigationAjax" href="document"><i class="fa fa-paperclip"></i> Attach</a></li>
+                <li><a class="navigationAjax" href="document/getall"><i class="fa fa-th-list"></i> View</a></li>
               </ul>
             </li>
             

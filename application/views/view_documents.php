@@ -1,6 +1,6 @@
 	<div class="box box-warning">
 		<div class="box-header with-border">
-			<h3 class="box-title">List of All Plans</h3>
+			<h3 class="box-title">List of All Documents</h3>
 			<div class="box-tools pull-right">
 				<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 			</div><!-- /.box-tools -->
@@ -9,27 +9,31 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>File #</th>
-                                <th>Type</th>
-                                <th>Applicant</th>
-                                <th>Registered On</th>
-                                <th>RQP</th>
-                                <th>Amount</th>
-                                <th>Status</th>
+                                <th>Title</th>
+                                <th>Total Received</th>
+                                <th>Total Pending</th>
+                                <th>Operation</th>
                             </tr>
                         </thead>
-                        <tbody id="planListingTable">
+                        <tbody id="documentListingTable">
                             <?php
                                 if(isset($data) && !empty($data)){
                                     for($i = 0; $i < count($data); $i++){
-                                        echo "<tr id='" . $data[$i]->id . "'><td>" . $data[$i]->fileNo . "</td><td>" . $data[$i]->type . "</td><td>" . $data[$i]->applicant . "</td><td>" . $data[$i]->registeredOn->format('Y-m-d') . "</td><td>" . $data[$i]->rqp . "</td><td>" . $data[$i]->amount . "</td><td>" . $data[$i]->status . "</td></tr>";
+                                        echo "<tr id='" . $data[$i]->id . "'><td>" . $data[$i]->name . "</td><td>" . $data[$i]->pending . "</td><td>" . $data[$i]->received . "</td><td></td></tr>";
                                     }
                                 }
                                 elseif(isset($message)){
-                                    echo "<tr><td colspan='6'>" . $message . "</td></tr>";
+                                    echo "<tr><td colspan='4'>" . $message . "</td></tr>";
                                 }
                             ?>
                         </tbody>
                     </table>
                 </div>
         </div>
+
+<?php
+$data = $this->session->userdata();
+$data['err_msg_view_document'] = "";
+$data['success_msg_view_document'] = "";
+$this->session->set_userdata($data);
+?>
