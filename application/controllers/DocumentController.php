@@ -83,8 +83,8 @@ class DocumentController extends CI_Controller
             $this->session->set_userdata($data);
             redirect('document');
         }
-        
-        $this->load->model('Document_model', $this->Document_model->ReadPendingDocument($fileNo));
+        $this->load->model('Document_model');
+        echo json_encode($this->Document_model->ReadPendingDocument($fileNo));
     }
     
     public function ReadAll(){

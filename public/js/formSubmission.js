@@ -14,7 +14,35 @@ $(document).ready(function(){
     });
     
     $("#replacable").on("click", "#docLookupBtn", function(event){
-        $("#lookupApplicantModal").modal("show");
+        if($("#fileLookup").val() != ""){
+            $.ajax({
+                url : BASE_URL + "document/viewstatus",
+                type : "POST",
+                //headers : {"Api-Key": "1234"},
+                data : {"fileNo" : $("#fileLookup").val()},
+                success : function(data){
+                    //console.log(data);
+                    try{
+                        response = JSON.parse(data);
+                        if(response.status == "success"){
+                            $("#documentTable").empty();
+                            $("#applicantName").empty().html(response.data[response.data.length - 1]);
+                            for(var i=0; i<response.data.length - 1; i++)
+                            {
+                                $("#documentTable").append("<tr id='" + response.data[i].id + "'><td>" + response.data[i].name + "</td><td>" + response.data[i].status + "</td><td>" + response.data[i].date + "</td></tr>");
+                            }
+                        }
+                    }catch(Ex)
+                    {
+                        console.log("Exception occured. ", Ex);
+                    }
+                },
+
+                error : function(XMLHttpRequest, textStatus, errorThrown){ 
+                    console.log("Status: " + textStatus + ", Error: " + errorThrown); 
+                }  
+            });
+        }
     });
     
     $("#replacable").on("click", "#applicantListingTable tr", function(event){

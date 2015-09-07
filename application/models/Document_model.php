@@ -71,14 +71,22 @@ class Document_model extends CI_Model {
         $data = array();
         if($allDocuments != FALSE){
             for($i = 0; $i < count($allDocuments); $i++){
+                $attachment = new stdClass();
+                $attachment->id = $allDocuments[$i]->getId();
+                $attachment->name = $allDocuments[$i]->getName();
+                $attachment->status = "Not Required";
                 $doc = $this->em->getRepository('Entities\PlanDocument')->findOneBy(array("planid" => $plan->getId(), "docid" => $allDocuments[$i]->getId()));
                 if($doc != FALSE){
                     if($doc->getStatus() == "pending")
-                        $data[$doc->getId()] = "Pending";
+                        $attachment->status = "Pending";
                     elseif($doc->getStatus() == "received")
-                        $data[$doc->getId()] = "Received";
+                        $attachment->status = "Received";
+                    
+                    $attachment->date = $doc->getDate();
                 }
+                $data[$i] = $attachment;
             }
+            $data[$i] = $plan->getApplicantid()->getName();
             
             //return all doc name and if pending or received or not required
             if(count($data) > 0)
@@ -87,11 +95,12 @@ class Document_model extends CI_Model {
         }
         else
         {
-            $data = $this->session->userdata();
+            /*$data = $this->session->userdata();
             $data['err_msg_attach_doc'] = "Required Document List is Empty. Please Mention Some Documents First. Error Code #400.";
             $data['success_msg_attach_doc'] = "";
             $this->session->set_userdata($data);
-            redirect('document');
+            redirect('document');*/
+            return array("status" => "error", "message" => array("Title" => "Required Document List is Empty. Please Mention Some Documents First.", "Code" => "400"));
         }
     }
     
