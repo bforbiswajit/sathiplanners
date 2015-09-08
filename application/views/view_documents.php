@@ -6,7 +6,7 @@
 			</div><!-- /.box-tools -->
 		</div><!-- /.box-header -->
                 <div class="box-body">
-                    <table class="table table-hover" id="documentDisplayTable">
+                    <table class="display" id="documentDisplayTable">
                         <thead>
                             <tr>
                                 <th>Title</th>

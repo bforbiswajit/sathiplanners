@@ -6,7 +6,7 @@
 			</div><!-- /.box-tools -->
 		</div><!-- /.box-header -->
                 <div class="box-body">
-                    <table class="table table-hover" id="planTable">
+                    <table class="display" id="planTable">
                         <thead>
                             <tr>
                                 <th>File #</th>
