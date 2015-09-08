@@ -24,7 +24,7 @@
 			</div><!-- /.box-tools -->
 		</div><!-- /.box-header -->
                 <div class="box-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="applicantTable">
                         <thead>
                             <tr>
                                 <th>#Sl. No.</th>

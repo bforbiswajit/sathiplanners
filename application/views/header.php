@@ -10,6 +10,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="<?php echo base_url('public/dist/css/AdminLTE.min.css'); ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('public/plugins/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet" type="text/css" />
@@ -61,6 +62,9 @@
   </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
+        <div id="progress_container">
+            <img id="loader" src="<?php echo base_url('public/dist/img/loader.gif'); ?>">
+        </div>
     <!-- Main Header -->
       <header class="main-header">
 

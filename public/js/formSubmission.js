@@ -1,6 +1,14 @@
 $(document).ready(function(){
     var BASE_URL = "../index.php";
     
+    $(document).ajaxStart(function(){
+        $("#progress_container").fadeIn(300)
+    }).ajaxStop(function(){
+        $("#progress_container").fadeOut(300)
+    });
+    customAjax("test"); //demo call
+    
+    $("#applicantTable").DataTable();
     $(".navigationAjax").on("click", function(){
         event.preventDefault();
         url = this.href;

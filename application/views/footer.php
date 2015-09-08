@@ -25,6 +25,7 @@
     <script src="<?php echo base_url('public/bootstrap/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url('public/dist/js/app.min.js'); ?>" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js" type="text/javascript"></script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
