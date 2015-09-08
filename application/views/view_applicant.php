@@ -24,7 +24,7 @@
 			</div><!-- /.box-tools -->
 		</div><!-- /.box-header -->
                 <div class="box-body">
-                    <table class="table table-hover" id="applicantTable">
+                    <table class="display" id="applicantTable" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>#Sl. No.</th>
@@ -51,6 +51,7 @@
                             ?>
                         </tbody>
                     </table>
+                    <script>$("#applicantTable").DataTable();</script>
                 </div>
         </div>
 

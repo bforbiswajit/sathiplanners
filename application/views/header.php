@@ -13,7 +13,6 @@
     <link href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="<?php echo base_url('public/dist/css/AdminLTE.min.css'); ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('public/plugins/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.

@@ -7,7 +7,6 @@ $(document).ready(function(){
         $("#progress_container").fadeOut(300)
     });
     
-    $("#applicantTable").DataTable();
     $(".navigationAjax").on("click", function(){
         event.preventDefault();
         url = this.href;
