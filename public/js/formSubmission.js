@@ -22,7 +22,7 @@ $(document).ready(function(){
     $("#replacable").on("click", "#docLookupBtn", function(event){
         if($("#fileLookup").val() != ""){
             $.ajax({
-                url : BASE_URL + "document/viewstatus",
+                url : BASE_URL + "/document/viewstatus",
                 type : "POST",
                 //headers : {"Api-Key": "1234"},
                 data : {"fileNo" : $("#fileLookup").val()},
