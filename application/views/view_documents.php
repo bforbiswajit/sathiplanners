@@ -6,7 +6,7 @@
 			</div><!-- /.box-tools -->
 		</div><!-- /.box-header -->
                 <div class="box-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="documentDisplayTable">
                         <thead>
                             <tr>
                                 <th>Title</th>
@@ -22,12 +22,10 @@
                                         echo "<tr id='" . $data[$i]->id . "'><td>" . $data[$i]->name . "</td><td>" . $data[$i]->pending . "</td><td>" . $data[$i]->received . "</td><td></td></tr>";
                                     }
                                 }
-                                elseif(isset($message)){
-                                    echo "<tr><td colspan='4'>" . $message . "</td></tr>";
-                                }
                             ?>
                         </tbody>
                     </table>
+                    <script>$("#documentDisplayTable").DataTable();</script>
                 </div>
         </div>
 

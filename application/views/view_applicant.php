@@ -45,9 +45,6 @@
                                         echo "<tr id='" . $data[$i]->id . "'><td>" . ($i + 1) . "</td><td>" . $data[$i]->name . "</td><td>" . $data[$i]->businessTitle . "</td><td>" . $data[$i]->mobile . "</td><td>" . $data[$i]->city . "</td><td>" . $data[$i]->district . "</td><td>" . $data[$i]->registeredOn->format('Y-m-d') . "</td><td>-</td></tr>";
                                     }
                                 }
-                                elseif(isset($message)){
-                                    echo "<tr><td colspan='8'>" . $message . "</td></tr>";
-                                }
                             ?>
                         </tbody>
                     </table>

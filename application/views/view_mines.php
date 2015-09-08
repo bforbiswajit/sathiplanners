@@ -6,7 +6,7 @@
 			</div><!-- /.box-tools -->
 		</div><!-- /.box-header -->
                 <div class="box-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="minesTable">
                         <thead>
                             <tr>
                                 <th>File #</th>
@@ -25,11 +25,9 @@
                                         echo "<tr id='" . $data[$i]->id . "'><td>" . $data[$i]->fileNo . "</td><td>" . $data[$i]->area . "</td><td>" . $data[$i]->leasType . "</td><td>" . $data[$i]->district . "</td><td>" . $data[$i]->mouza . "</td><td>" . $data[$i]->notes . "</td></tr>";
                                     }
                                 }
-                                elseif(isset($message)){
-                                    echo "<tr><td colspan='8'>" . $message . "</td></tr>";
-                                }
                             ?>
                         </tbody>
                     </table>
+                    <script>$("#minesTable").DataTable();</script>
                 </div>
         </div>

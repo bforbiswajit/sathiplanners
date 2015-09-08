@@ -6,7 +6,7 @@
 			</div><!-- /.box-tools -->
 		</div><!-- /.box-header -->
                 <div class="box-body">
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="planTable">
                         <thead>
                             <tr>
                                 <th>File #</th>
@@ -25,11 +25,9 @@
                                         echo "<tr id='" . $data[$i]->id . "'><td>" . $data[$i]->fileNo . "</td><td>" . $data[$i]->type . "</td><td>" . $data[$i]->applicant . "</td><td>" . $data[$i]->registeredOn->format('Y-m-d') . "</td><td>" . $data[$i]->rqp . "</td><td>" . $data[$i]->amount . "</td><td>" . $data[$i]->status . "</td></tr>";
                                     }
                                 }
-                                elseif(isset($message)){
-                                    echo "<tr><td colspan='6'>" . $message . "</td></tr>";
-                                }
                             ?>
                         </tbody>
                     </table>
+                    <script>$("#planTable").DataTable();</script>
                 </div>
         </div>
