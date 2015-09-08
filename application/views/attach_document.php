@@ -33,31 +33,23 @@
                                     <button class="btn btn-default" type="button" id="docLookupBtn">Lookup</button>
                                 </span>
                             </div><br/>
-                            <span id="applicantName"></span>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="documentTable">
-                                    <?php
-                                        /*if(isset($data) && !empty($data)){
-                                            for($i = 0; $i < count($data); $i++){
-                                                echo "<tr id='" . $data[$i]->id . "'><td>" . $data[$i]->name . "</td><td>" . $data[$i]->pending . "</td><td>" . $data[$i]->received . "</td><td></td></tr>";
-                                            }
-                                        }
-                                        elseif(isset($message)){
-                                            echo "<tr><td colspan='4'>" . $message . "</td></tr>";
-                                        }*/
-                                    ?>
-                                </tbody>
-                            </table>
-                            <div class="modal-footer">
-                                <button type="reset" class="btn btn-default">Cancel</button>
-                                <button type="submit" class="btn btn-primary">Save</button>
+                            <div id="docStatus" style="display: none;">
+                                Applicant Name : <b><span id="applicantName"></span></b><br/>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Status</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="documentTable">
+                                        
+                                    </tbody>
+                                </table>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
                             </div>
                         </div>
                     </form>

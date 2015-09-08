@@ -30,14 +30,25 @@ $(document).ready(function(){
                     //console.log(data);
                     try{
                         response = JSON.parse(data);
+                        $("#documentTable").empty();
                         if(response.status == "success"){
-                            $("#documentTable").empty();
-                            $("#applicantName").empty().html(response.data[response.data.length - 1]);
-                            for(var i=0; i<response.data.length - 1; i++)
+                            $("#applicantName").empty().html(response.applicant);
+                            for(var i=0; i<response.data.length; i++)
                             {
-                                $("#documentTable").append("<tr id='" + response.data[i].id + "'><td>" + response.data[i].name + "</td><td>" + response.data[i].status + "</td><td>" + response.data[i].date + "</td></tr>");
+                                var recOn = "";
+                                if(response.data[i].receiveDate != ""){
+                                    recOn = response.data[i].receiveDate.date.substring(0, response.data[i].receiveDate.date.indexOf(' '));
+                                }
+                                $("#documentTable").append("<tr id='" + response.data[i].id + "'><td>" + response.data[i].name + "</td><td>" + "<select id='statusList" + response.data[i].id + "'><option value='Received'>Received</option><option value='Pending'>Pending</option><option value='Not Required'>Not Required</option>" + "</select>" + "</td><td>" + recOn + "</td></tr>");
+                                $("#statusList" + response.data[i].id + " option").each(function(){
+                                    if($(this).text()== response.data[i].status)
+                                        $(this).attr('selected','selected');
+                                });
                             }
                         }
+                        else
+                            $("#documentTable").append("<tr><td colspan='3'>Invalid File No.</td></tr>");
+                        $("#docStatus").fadeIn(200);
                     }catch(Ex)
                     {
                         console.log("Exception occured. ", Ex);

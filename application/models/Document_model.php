@@ -75,22 +75,18 @@ class Document_model extends CI_Model {
                 $attachment->id = $allDocuments[$i]->getId();
                 $attachment->name = $allDocuments[$i]->getName();
                 $attachment->status = "Not Required";
+                $attachment->receiveDate = "";
                 $doc = $this->em->getRepository('Entities\PlanDocument')->findOneBy(array("planid" => $plan->getId(), "docid" => $allDocuments[$i]->getId()));
                 if($doc != FALSE){
-                    if($doc->getStatus() == "pending")
-                        $attachment->status = "Pending";
-                    elseif($doc->getStatus() == "received")
-                        $attachment->status = "Received";
-                    
-                    $attachment->date = $doc->getDate();
+                    $attachment->status = $doc->getStatus();
+                    $attachment->receiveDate = $doc->getDate();
                 }
                 $data[$i] = $attachment;
             }
-            $data[$i] = $plan->getApplicantid()->getName();
             
             //return all doc name and if pending or received or not required
             if(count($data) > 0)
-                return array("status" => "success", "data" => $data);
+                return array("status" => "success", "data" => $data, "applicant" => $plan->getApplicantid()->getName());
             return array("status" => "error", "message" => "No data found.");
         }
         else
