@@ -6,7 +6,6 @@ $(document).ready(function(){
     }).ajaxStop(function(){
         $("#progress_container").fadeOut(300)
     });
-    customAjax("test"); //demo call
     
     $("#applicantTable").DataTable();
     $(".navigationAjax").on("click", function(){

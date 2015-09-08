@@ -51,6 +51,7 @@
         background: rgba(20,20,20,.81);
         position: fixed;
         text-align: center;
+        display: none;
       }
       
       #loader {
