@@ -1,7 +1,7 @@
 <#if licenseFirst??>
 ${licenseFirst}
 </#if>
-${licensePrefix}FirstMe Server API
+${licensePrefix}Sathi Planners Server API
 ${licensePrefix}Author : Biswajit Bardhan ${licensePrefix}
 <#if licenseLast??>
 ${licenseLast}
